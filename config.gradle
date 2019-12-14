@@ -1,0 +1,37 @@
+ext {
+    android = [
+            compileSdkVersion: 28,
+            buildToolsVersion: "28.0.3",
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,
+            versionCode      : 1,
+            versionName      : "1.0",
+    ]
+    support = [
+            "constraintlayout": "androidx.constraintlayout:constraintlayout:1.1.3",
+            "junit"           : "androidx.test.ext:junit:1.1.0",
+            "espresso-core"   : "androidx.test.espresso:espresso-core:3.1.1",
+            "appcompat"       : "androidx.appcompat:appcompat:1.0.2"
+    ]
+
+    dependencies = [
+            "arouter"                    : "com.alibaba:arouter-api:1.2.2",
+            "arouter-compiler"           : "com.alibaba:arouter-compiler:1.2.2",
+            "immersionbar"               : "com.gyf.immersionbar:immersionbar:3.0.0",
+            "retrofit"                   : "com.squareup.retrofit2:retrofit:2.1.0",
+            "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:2.1.0",
+            "converter-gson"             : "com.squareup.retrofit2:converter-gson:2.1.0",
+            "logging-interceptor"        : "com.squareup.okhttp3:logging-interceptor:3.4.1",
+            "rxjava"                     : "io.reactivex:rxjava:1.1.6",
+            "rxandroid"                  : "io.reactivex:rxandroid:1.2.1",
+            "gson"                       : "com.google.code.gson:gson:2.8.5",
+            "material"                   : "com.google.android.material:material:1.0.0",
+            "BasePopup"                  : "com.github.razerdp:BasePopup:2.2.0",
+            "slidinguppanel"             : "com.sothree.slidinguppanel:library:3.4.0",
+            "leakcanary-android"         : "com.squareup.leakcanary:leakcanary-android:1.6.2",
+            "leakcanary-support-fragment": "com.squareup.leakcanary:leakcanary-support-fragment:1.6.2",
+            "ktx"                        : "androidx.core:core-ktx:+",
+            "ktx-jdk"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "flyco-tablayout"            : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+    ]
+}
