@@ -3,6 +3,7 @@ package com.life.base.http;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -10,7 +11,10 @@ import rx.Observable;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("/user/login")
-    Observable<CommonBean<Object>> login(@Field("phone") String userName, @Field("password") String pwd);
+    @GET("/authorize")
+    Observable<Object> login(@Field("client_id") String client_id,
+                                         @Field("redirect_uri") String redirect_uri,
+                                         @Field("response_type") String response_type,
+                                         @Field("scope") String scope);
 
 }

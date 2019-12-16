@@ -29,7 +29,7 @@ public class HttpUtil {
     //添加线程管理并订阅
     public <T> Subscription request(Observable ob, final Subscriber<T> onNext) {
         //数据预处理
-        Observable.Transformer<CommonBean<Object>, Object> result = RxHelper.handleResult();
+        Observable.Transformer<Object, Object> result = RxHelper.handleResult();
         return ob.compose(result).subscribe(onNext);
     }
 }

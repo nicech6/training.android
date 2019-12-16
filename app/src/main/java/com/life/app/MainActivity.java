@@ -1,5 +1,7 @@
 package com.life.app;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.life.base.constant.Path;
 import com.life.base.mvp.BaseMvpActivity;
 import com.life.base.mvp.BasePresenter;
 import com.flyco.tablayout.CommonTabLayout;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
  * @date: 2019/12/14
  * @email: nicech6@163.com
  */
+@Route(path = Path.APP_MAIN)
 public class MainActivity extends BaseMvpActivity {
     private CommonTabLayout mTabLayout;
     private String titles[] = new String[]{"首页", "收藏", "我的"};

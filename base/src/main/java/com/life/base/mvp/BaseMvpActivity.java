@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.life.base.R;
 import com.gyf.immersionbar.ImmersionBar;
+import com.life.base.R;
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompatActivity {
     protected P mPresenter;

@@ -53,7 +53,7 @@ public class Api {
                         }
                     }).build();
 
-            String url = "https://www.wanandroid.com";
+            String url = "https://api-m.mtime.cn/";
 
             SERVICE = new Retrofit.Builder()
                     .client(client)

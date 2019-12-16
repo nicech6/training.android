@@ -15,17 +15,17 @@ public class RxHelper {
      * @param <T>
      * @return
      */
-    public static <T> Observable.Transformer<CommonBean<T>, T> handleResult() {
-        return new Observable.Transformer<CommonBean<T>, T>() {
+    public static <T> Observable.Transformer<T, T> handleResult() {
+        return new Observable.Transformer<T, T>() {
             @Override
-            public Observable<T> call(Observable<CommonBean<T>> commenBeanObservable) {
-                return commenBeanObservable.flatMap(new Func1<CommonBean<T>, Observable<T>>() {
+            public Observable<T> call(Observable<T> commenBeanObservable) {
+                return commenBeanObservable.flatMap(new Func1<T, Observable<T>>() {
                     @Override
-                    public Observable<T> call(CommonBean<T> tCommenBean) {
-                        if (tCommenBean.errorCode == 0) {
-                            return createData(tCommenBean.data);
+                    public Observable<T> call(T tCommenBean) {
+                        if (true) {
+                            return createData(tCommenBean);
                         } else {
-                            return Observable.error(new ApiException(tCommenBean.errorCode, tCommenBean.errorMsg));
+                            return null;
                         }
                     }
                 }).subscribeOn(Schedulers.io())

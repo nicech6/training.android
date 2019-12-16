@@ -1,5 +1,7 @@
 package com.life.app.boot;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.life.base.constant.Path;
 import com.life.base.mvp.BaseMvpActivity;
 import com.life.base.mvp.BasePresenter;
 import com.life.app.R;
@@ -13,7 +15,7 @@ import com.life.app.R;
 public class BootActivity extends BaseMvpActivity {
     @Override
     protected void initView() {
-
+        ARouter.getInstance().build(Path.LOGIN_MAI).navigation();
     }
 
     @Override
