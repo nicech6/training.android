@@ -12,4 +12,6 @@ public class Path {
     public static final String LOGIN_MAI = "/login/main";
 
     public static final String HOME = "/app/main/fragment";
+
+    public static final String MINE="/app/main/mine";
 }

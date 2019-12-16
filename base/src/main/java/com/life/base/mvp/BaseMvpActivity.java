@@ -32,7 +32,9 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.onDetach();
+        if (null!=mPresenter){
+            mPresenter.onDetach();
+        }
     }
 
     @Override

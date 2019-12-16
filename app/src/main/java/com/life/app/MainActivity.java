@@ -1,13 +1,22 @@
 package com.life.app;
 
+import android.view.ViewParent;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.life.base.constant.Path;
 import com.life.base.mvp.BaseMvpActivity;
 import com.life.base.mvp.BasePresenter;
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
+import com.life.base.widget.BaseViewPageAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: cuihai
@@ -18,27 +27,63 @@ import java.util.ArrayList;
 @Route(path = Path.APP_MAIN)
 public class MainActivity extends BaseMvpActivity {
     private CommonTabLayout mTabLayout;
-    private String titles[] = new String[]{"首页", "收藏", "我的"};
-    private int unSelectedIds[] = new int[]{R.mipmap.icon_home_unselected, R.mipmap.icon_collect_unselected, R.mipmap.icon_mine_unselected};
-    private int selectedIds[] = new int[]{R.mipmap.icon_home_selected, R.mipmap.icon_collect_selected, R.mipmap.icon_mine_selected};
+    private ViewPager mViewPager;
+    private String titles[] = new String[]{"首页", "我的"};
+    private int unSelectedIds[] = new int[]{R.mipmap.icon_home_unselected, R.mipmap.icon_mine_unselected};
+    private int selectedIds[] = new int[]{R.mipmap.icon_home_selected, R.mipmap.icon_mine_selected};
     private ArrayList<CustomTabEntity> mEntityList = new ArrayList<>();
+    private List<Fragment> mFragmentList;
 
     @Override
     protected void initView() {
         mTabLayout = findViewById(R.id.tab);
+        mViewPager = findViewById(R.id.viewpager);
     }
 
     @Override
     protected void bindEvent() {
+        mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelect(int position) {
+                mViewPager.setCurrentItem(position);
+            }
+
+            @Override
+            public void onTabReselect(int position) {
+
+            }
+        });
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mTabLayout.setCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
     @Override
     protected void initData() {
+        mFragmentList = new ArrayList<>();
+        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.HOME).navigation();
+        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
+        mFragmentList.add(fragment);
+        mFragmentList.add(fragment1);
         for (int i = 0; i < titles.length; i++) {
             mEntityList.add(new TabEntity(titles[i], selectedIds[i], unSelectedIds[i]));
         }
         mTabLayout.setTabData(mEntityList);
+        mViewPager.setAdapter(new BaseViewPageAdapter(getSupportFragmentManager(), mFragmentList));
     }
 
     @Override
@@ -53,6 +98,6 @@ public class MainActivity extends BaseMvpActivity {
 
     @Override
     protected boolean immersion() {
-        return false;
+        return true;
     }
 }
