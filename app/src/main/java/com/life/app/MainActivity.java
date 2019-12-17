@@ -27,9 +27,9 @@ import java.util.List;
 public class MainActivity extends BaseMvpActivity {
     private CommonTabLayout mTabLayout;
     private ViewPager mViewPager;
-    private String titles[] = new String[]{"首页", "我的"};
-    private int unSelectedIds[] = new int[]{R.mipmap.icon_home_unselected, R.mipmap.icon_mine_unselected};
-    private int selectedIds[] = new int[]{R.mipmap.icon_home_selected, R.mipmap.icon_mine_selected};
+    private String titles[] = new String[]{"首页", "频道","动态","我的"};
+    private int unSelectedIds[] = new int[]{R.mipmap.gift_un, R.mipmap.gloves_un, R.mipmap.tree_un, R.mipmap.santa_un};
+    private int selectedIds[] = new int[]{R.mipmap.gift, R.mipmap.gloves, R.mipmap.tree, R.mipmap.santa};
     private ArrayList<CustomTabEntity> mEntityList = new ArrayList<>();
     private List<Fragment> mFragmentList;
 
@@ -76,8 +76,12 @@ public class MainActivity extends BaseMvpActivity {
         mFragmentList = new ArrayList<>();
         Fragment fragment = (Fragment) ARouter.getInstance().build(Path.HOME).navigation();
         Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
+        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
+        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
         mFragmentList.add(fragment);
         mFragmentList.add(fragment1);
+        mFragmentList.add(fragment2);
+        mFragmentList.add(fragment3);
         for (int i = 0; i < titles.length; i++) {
             mEntityList.add(new TabEntity(titles[i], selectedIds[i], unSelectedIds[i]));
         }

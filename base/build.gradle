@@ -45,6 +45,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    debugImplementation rootProject.ext.dependencies["leakcanary-android"]
+    debugImplementation rootProject.ext.dependencies["leakcanary-support-fragment"]
     api project(':http')
     api rootProject.ext.support.appcompat
     api rootProject.ext.support.constraintlayout
@@ -53,7 +55,6 @@ dependencies {
     api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.BasePopup
     api rootProject.ext.dependencies.slidinguppanel
+    api rootProject.ext.dependencies["magic-tablayout"]
     api rootProject.ext.dependencies["flyco-tablayout"]
-    debugImplementation rootProject.ext.dependencies["leakcanary-android"]
-    debugImplementation rootProject.ext.dependencies["leakcanary-support-fragment"]
 }

@@ -33,5 +33,6 @@ ext {
             "ktx"                        : "androidx.core:core-ktx:+",
             "ktx-jdk"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "flyco-tablayout"            : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "magic-tablayout"            : "com.github.hackware1993:MagicIndicator:1.5.0"
     ]
 }
