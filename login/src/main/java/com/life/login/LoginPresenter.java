@@ -3,8 +3,9 @@ package com.life.login;
 import android.content.Context;
 
 import com.life.base.entity.LoginEntity;
-import com.life.base.http.MyCallBack;
+
 import com.life.base.mvp.BasePresenter;
+import com.life.http.MyCallBack;
 
 public class LoginPresenter extends BasePresenter<LoginContact.View, LoginModel> implements LoginContact.Presenter {
 

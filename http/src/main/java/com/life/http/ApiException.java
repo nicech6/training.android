@@ -1,9 +1,4 @@
-package com.life.base.http;
-
-import android.text.TextUtils;
-
-import com.life.base.util.ToastUtils;
-
+package com.life.http;
 
 public class ApiException extends RuntimeException {
     private int mErrorCode;
@@ -12,12 +7,7 @@ public class ApiException extends RuntimeException {
     public ApiException(int resultCode, String msg) {
         mErrorCode = resultCode;
         mMessage = msg;
-        //统一的toast提醒
-        if (!TextUtils.isEmpty(mMessage)){
-            ToastUtils.showLong(msg);
-        }else {
-            ToastUtils.showLong(mErrorCode+"");
-        }
+
     }
 
     @Override

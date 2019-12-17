@@ -1,4 +1,4 @@
-package com.life.base.http;
+package com.life.http;
 
 /**
  * @author: cuihai

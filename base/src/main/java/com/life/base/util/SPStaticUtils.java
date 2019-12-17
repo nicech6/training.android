@@ -1,6 +1,7 @@
 package com.life.base.util;
 
 import android.content.SharedPreferences;
+
 import androidx.annotation.NonNull;
 
 import java.util.Map;

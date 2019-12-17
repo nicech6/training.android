@@ -1,4 +1,4 @@
-package com.life.app;
+package com.life.base.widget;
 
 import com.flyco.tablayout.listener.CustomTabEntity;
 

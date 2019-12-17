@@ -1,7 +1,5 @@
 package com.life.app;
 
-import android.view.ViewParent;
-
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -14,6 +12,7 @@ import com.life.base.constant.Path;
 import com.life.base.mvp.BaseMvpActivity;
 import com.life.base.mvp.BasePresenter;
 import com.life.base.widget.BaseViewPageAdapter;
+import com.life.base.widget.TabEntity;
 
 import java.util.ArrayList;
 import java.util.List;

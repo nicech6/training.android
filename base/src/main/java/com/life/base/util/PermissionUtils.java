@@ -18,7 +18,6 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;

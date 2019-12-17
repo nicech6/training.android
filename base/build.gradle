@@ -45,17 +45,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':http')
     api rootProject.ext.support.appcompat
     api rootProject.ext.support.constraintlayout
     api rootProject.ext.dependencies.arouter
     api rootProject.ext.dependencies.immersionbar
-    api rootProject.ext.dependencies.retrofit
-    api rootProject.ext.dependencies["converter-gson"]
-    api rootProject.ext.dependencies["adapter-rxjava"]
-    api rootProject.ext.dependencies["logging-interceptor"]
-    api rootProject.ext.dependencies.rxjava
-    api rootProject.ext.dependencies.rxandroid
-    api rootProject.ext.dependencies.gson
     api rootProject.ext.dependencies.material
     api rootProject.ext.dependencies.BasePopup
     api rootProject.ext.dependencies.slidinguppanel

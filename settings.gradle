@@ -1,2 +1,2 @@
-include ':app', ':login', ':base'
+include ':app', ':login', ':base', ':http'
 rootProject.name='Life'

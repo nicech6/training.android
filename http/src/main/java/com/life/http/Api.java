@@ -1,6 +1,7 @@
-package com.life.base.http;
+package com.life.http;
 
-import com.life.base.util.SPUtils;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +30,9 @@ public class Api {
     public static String getCookie() {
         //先从sp获取
         if (COOKIE.isEmpty()) {
-            COOKIE = SPUtils.getInstance().getString("cookie", "");
+            SharedPreferences sharedPreferences = Util.getApplicationByReflect().getSharedPreferences("config", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editorConfig = sharedPreferences.edit();
+            COOKIE = sharedPreferences.getString("cookie", "");
         }
         return COOKIE;
     }

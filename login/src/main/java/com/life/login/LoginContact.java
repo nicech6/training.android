@@ -1,9 +1,10 @@
 package com.life.login;
 
 import com.life.base.entity.LoginEntity;
-import com.life.base.http.MyCallBack;
+
 import com.life.base.mvp.BaseModel;
 import com.life.base.mvp.BaseView;
+import com.life.http.MyCallBack;
 
 /**
  * @author: cuihai
