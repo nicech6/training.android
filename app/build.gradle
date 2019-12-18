@@ -30,6 +30,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -39,5 +42,6 @@ dependencies {
         implementation project(':login')
     }
     kapt rootProject.ext.dependencies["arouter-compiler"]
+    kapt rootProject.ext.dependencies["glide-compile"]
     annotationProcessor rootProject.ext.dependencies.arouter
 }

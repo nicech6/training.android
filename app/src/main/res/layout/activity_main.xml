@@ -16,10 +16,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.life.base.widget.LineView
-        android:layout_width="match_parent"
         android:id="@+id/line1"
-        app:layout_constraintBottom_toTopOf="@id/tab"
-        android:layout_height="0.5dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        app:layout_constraintBottom_toTopOf="@id/tab" />
 
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab"
@@ -29,9 +29,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:tl_iconHeight="20dp"
-        app:tl_textsize="12dp"
+        app:tl_iconWidth="20dp"
         app:tl_textSelectColor="#DE5736"
         app:tl_textUnselectColor="#BFBFBF"
-        app:tl_iconWidth="20dp" />
+        app:tl_textsize="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,8 @@ ext {
             "constraintlayout": "androidx.constraintlayout:constraintlayout:1.1.3",
             "junit"           : "androidx.test.ext:junit:1.1.0",
             "espresso-core"   : "androidx.test.espresso:espresso-core:3.1.1",
-            "appcompat"       : "androidx.appcompat:appcompat:1.0.2"
+            "appcompat"       : "androidx.appcompat:appcompat:1.0.2",
+            "life-extensions" : "android.arch.lifecycle:extensions:1.1.1"
     ]
 
     dependencies = [
@@ -33,6 +34,9 @@ ext {
             "ktx"                        : "androidx.core:core-ktx:+",
             "ktx-jdk"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "flyco-tablayout"            : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
-            "magic-tablayout"            : "com.github.hackware1993:MagicIndicator:1.5.0"
+            "magic-tablayout"            : "com.github.hackware1993:MagicIndicator:1.5.0",
+            "glide"                      : "com.github.bumptech.glide:glide:4.9.0",
+            "glide-compile"              : "com.github.bumptech.glide:compiler:4.9.0",
+
     ]
 }

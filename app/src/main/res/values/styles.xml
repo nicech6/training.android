@@ -1,9 +1,10 @@
 <resources>
+
     <style name="Boot" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@mipmap/icon_boot</item>
+        <item name="android:windowBackground">@color/config_color_white</item>
     </style>
 </resources>

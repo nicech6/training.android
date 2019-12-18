@@ -7,7 +7,8 @@ package com.life.http;
  * @email: nicech6@163.com
  */
 public class CommonBean<T> {
-    public int errorCode;
-    public String errorMsg;
+    public int code;
+    public String message;
+    public String ver;
     public T data;
 }

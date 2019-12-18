@@ -6,9 +6,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.gyf.immersionbar.ImmersionBar;
+import com.life.base.BaseActivity;
 import com.life.base.R;
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
     protected P mPresenter;
 
     @Override
@@ -32,7 +33,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (null!=mPresenter){
+        if (null != mPresenter) {
             mPresenter.onDetach();
         }
     }
@@ -44,14 +45,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends AppCompat
 
     protected abstract void initView();
 
-    protected abstract void bindEvent();
-
-    protected abstract void initData();
-
-    protected abstract int initLayout();
-
     protected abstract P initPresenter();
-
-    protected abstract boolean immersion();
 
 }
