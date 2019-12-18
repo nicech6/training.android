@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.life.base.widget.LineView
+    <com.bili.base.widget.LineView
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.life.base.entity.SplashEntity" />
+            type="com.bili.base.entity.SplashEntity" />
     </data>
 
     <LinearLayout

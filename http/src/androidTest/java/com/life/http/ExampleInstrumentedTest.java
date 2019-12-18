@@ -1,4 +1,4 @@
-package com.life.http;
+package com.bili.http;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.life.http", appContext.getPackageName());
+        assertEquals("com.bili.http", appContext.getPackageName());
     }
 }
