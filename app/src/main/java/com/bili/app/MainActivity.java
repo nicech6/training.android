@@ -28,8 +28,10 @@ public class MainActivity extends BaseMvpActivity {
     private CommonTabLayout mTabLayout;
     private ViewPager mViewPager;
     private String titles[] = new String[]{"首页", "频道","动态","我的"};
-    private int unSelectedIds[] = new int[]{R.mipmap.gift_un, R.mipmap.gloves_un, R.mipmap.tree_un, R.mipmap.santa_un};
-    private int selectedIds[] = new int[]{R.mipmap.gift, R.mipmap.gloves, R.mipmap.tree, R.mipmap.santa};
+    private int selectedIds[] = new int[]{  R.mipmap.ic_home_selected, R.mipmap.ic_category_selected,
+            R.mipmap.ic_dynamic_selected, R.mipmap.ic_communicate_selected};
+    private int unSelectedIds[] = new int[]{R.mipmap.ic_home_unselected, R.mipmap.ic_category_unselected,
+            R.mipmap.ic_dynamic_unselected, R.mipmap.ic_communicate_unselected};
     private ArrayList<CustomTabEntity> mEntityList = new ArrayList<>();
     private List<Fragment> mFragmentList;
 
@@ -52,23 +54,6 @@ public class MainActivity extends BaseMvpActivity {
 
             }
         });
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mTabLayout.setCurrentTab(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
     }
 
     @Override

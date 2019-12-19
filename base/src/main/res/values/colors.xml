@@ -82,4 +82,14 @@
     <color name="config_color_line_f6">#F6F7FB</color>
     <color name="config_color_line_d8">#D8D8D8</color>
     <color name="config_color_line_E7E8E9">#E7E8E9</color>
+
+    <color name="theme_color_navigation_profilecover">#99f0486c</color>
+    <color name="theme_color_pink">#fffb7299</color>
+    <color name="theme_color_primary">#fffb7299</color>
+    <color name="theme_color_primary_dark">#ffb85671</color>
+    <color name="theme_color_primary_light">#ffb87891</color>
+    <color name="theme_color_primary_trans">#99f0486c</color>
+    <color name="theme_color_secondary">#fffb7299</color>
+    <color name="theme_color_secondary_dark">#ffb85671</color>
+    <color name="theme_color_text_highlight">#99f0486c</color>
 </resources>

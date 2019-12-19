@@ -13,5 +13,7 @@ public class Path {
 
     public static final String HOME = "/home/main/fragment";
 
+    public static final String HOME_LIVE = "/home/live/fragment";
+
     public static final String MINE="/app/main/mine";
 }

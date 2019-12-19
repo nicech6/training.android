@@ -1,5 +1,6 @@
 package com.bili.base.mvp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,18 +18,24 @@ import androidx.fragment.app.Fragment;
  */
 public abstract class BaseMvpFragment<P extends BasePresenter> extends Fragment {
     private P mPresenter;
+    public Context mContext;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = LayoutInflater.from(getContext()).inflate(initLayout(), container, false);
+        initView();
         return inflate;
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initView();
         initData();
         bindEvent();
         mPresenter = initPresenter();
