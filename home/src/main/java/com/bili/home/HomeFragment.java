@@ -24,7 +24,6 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNav
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerIndicator;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.indicators.LinePagerIndicator;
-import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.badge.BadgePagerTitleView;
 
 import java.util.ArrayList;
@@ -108,6 +107,7 @@ public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBi
 
             @Override
             public void onPageSelected(int position) {
+                mBindingView.tab.onPageSelected(position);
             }
 
             @Override

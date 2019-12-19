@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.bili.base.entity.SplashEntity;
 import com.bili.http.Api;
-import com.bili.app.ApiService;
+import com.bili.app.ApiApp;
 import com.bili.http.CommonBean;
 import com.bili.http.HttpUtil;
 
@@ -29,7 +29,7 @@ public class BootViewModel extends AndroidViewModel {
 
     public MutableLiveData<CommonBean<List<SplashEntity>>> getSplash() {
         final MutableLiveData<CommonBean<List<SplashEntity>>> data = new MutableLiveData<>();
-        HttpUtil.getInstance().request(Api.getDefault(ApiService.class).getSplash("android", "502000", "xiaomi", 1080, 1920, "4082600596548893087"), new Subscriber<CommonBean<List<SplashEntity>>>() {
+        HttpUtil.getInstance().request(Api.getDefault(Api.HOST, ApiApp.class).getSplash("android", "502000", "xiaomi", 1080, 1920, "4082600596548893087"), new Subscriber<CommonBean<List<SplashEntity>>>() {
             @Override
             public void onCompleted() {
 

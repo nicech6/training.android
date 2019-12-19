@@ -18,8 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class Api {
-    private static String HOST = "http://app.bilibili.com";
-    private static String LIVEHOST = "http://api.live.bilibili.com";
+    public static String HOST = "http://app.bilibili.com";
+    public static String LIVEHOST = "http://api.live.bilibili.com";
     //超时时间
     private static final int DEFAULT_TIMEOUT = 10000;
     private static String COOKIE = "";
@@ -35,8 +35,8 @@ public class Api {
         return COOKIE;
     }
 
-    public static <T> T getDefault(Class<T> clazz) {
-        return getRetrofit(HOST).create(clazz);
+    public static <T> T getDefault(String baseUrl, Class<T> clazz) {
+        return getRetrofit(baseUrl).create(clazz);
     }
 
     private static Retrofit getRetrofit(String baseurl) {

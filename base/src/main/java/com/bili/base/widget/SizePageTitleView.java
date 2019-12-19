@@ -21,17 +21,13 @@ public class SizePageTitleView extends SimplePagerTitleView {
 
     @Override
     public void onLeave(int index, int totalCount, float leavePercent, boolean leftToRight) {
-        int color = ArgbEvaluatorHolder.eval(leavePercent, mSelectedColor, mNormalColor);
-        setTextColor(color);
         float size = 2 * leavePercent;
-        setTextSize(14 - size);
+        setTextSize(16 - size);
     }
 
     @Override
     public void onEnter(int index, int totalCount, float enterPercent, boolean leftToRight) {
-        int color = ArgbEvaluatorHolder.eval(enterPercent, mNormalColor, mSelectedColor);
-        setTextColor(color);
         float size = 2 * enterPercent;
-        setTextSize(12 + size);
+        setTextSize(14 + size);
     }
 }

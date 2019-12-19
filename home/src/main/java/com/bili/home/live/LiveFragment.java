@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bili.base.constant.Path;
@@ -27,7 +28,12 @@ public class LiveFragment extends BaseMVVMFragment<LiveViewModel, FragmentLiveBi
 
     @Override
     protected void initData() {
+        mViewModel.getData().observe(this, new Observer<Object>() {
+            @Override
+            public void onChanged(Object listCommonBean) {
 
+            }
+        });
     }
 
     @Override
