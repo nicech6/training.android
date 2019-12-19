@@ -9,9 +9,11 @@ import androidx.lifecycle.Observer;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bili.base.constant.Path;
+import com.bili.base.entity.home.HomeLiveEntity;
 import com.bili.base.mvvm.BaseMVVMFragment;
 import com.bili.home.R;
 import com.bili.home.databinding.FragmentLiveBinding;
+import com.bili.http.CommonBean;
 
 /**
  * @author: cuihai
@@ -28,9 +30,9 @@ public class LiveFragment extends BaseMVVMFragment<LiveViewModel, FragmentLiveBi
 
     @Override
     protected void initData() {
-        mViewModel.getData().observe(this, new Observer<Object>() {
+        mViewModel.getData().observe(this, new Observer<CommonBean<HomeLiveEntity>>() {
             @Override
-            public void onChanged(Object listCommonBean) {
+            public void onChanged(CommonBean<HomeLiveEntity> entityCommonBean) {
 
             }
         });

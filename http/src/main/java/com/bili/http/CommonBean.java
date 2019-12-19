@@ -9,6 +9,6 @@ package com.bili.http;
 public class CommonBean<T> {
     public int code;
     public String message;
-    public String ver;
+    public String msg;
     public T data;
 }

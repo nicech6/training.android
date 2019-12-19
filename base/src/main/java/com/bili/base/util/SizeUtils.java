@@ -165,6 +165,31 @@ public final class SizeUtils {
         return new int[]{view.getMeasuredWidth(), view.getMeasuredHeight()};
     }
 
+    /**
+     * 获取屏幕dpi
+     */
+    public static String getDensityString() {
+        DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
+        switch (displayMetrics.densityDpi) {
+            case DisplayMetrics.DENSITY_LOW:
+                return "ldpi";
+            case DisplayMetrics.DENSITY_MEDIUM:
+                return "mdpi";
+            case DisplayMetrics.DENSITY_HIGH:
+                return "hdpi";
+            case DisplayMetrics.DENSITY_XHIGH:
+                return "xhdpi";
+            case DisplayMetrics.DENSITY_XXHIGH:
+                return "xxhdpi";
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                return "xxxhdpi";
+            case DisplayMetrics.DENSITY_TV:
+                return "tvdpi";
+            default:
+                return String.valueOf(displayMetrics.densityDpi);
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     // interface
     ///////////////////////////////////////////////////////////////////////////

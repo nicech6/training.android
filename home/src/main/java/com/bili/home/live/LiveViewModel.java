@@ -6,9 +6,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.bili.base.entity.home.HomeLiveEntity;
+import com.bili.base.util.SizeUtils;
 import com.bili.home.ApiHome;
 import com.bili.http.Api;
 import com.bili.http.ApiHelper;
+import com.bili.http.CommonBean;
 import com.bili.http.HttpUtil;
 
 import rx.Subscriber;
@@ -24,19 +27,9 @@ public class LiveViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public MutableLiveData<Object> getData() {
-        final MutableLiveData<Object> data = new MutableLiveData<>();
-        HttpUtil.getInstance().request(Api.getDefault(Api.HOST, ApiHome.class).getIndex(ApiHelper.APP_KEY,
-                ApiHelper.BUILD,
-                0,
-                1,
-                ApiHelper.MOBI_APP,
-                ApiHelper.NETWORK_WIFI,
-                "cold",
-                ApiHelper.PLATFORM,
-                true,
-                2,
-                String.valueOf(System.currentTimeMillis())), new Subscriber<Object>() {
+    public MutableLiveData<CommonBean<HomeLiveEntity>> getData() {
+        final MutableLiveData<CommonBean<HomeLiveEntity>> data = new MutableLiveData<>();
+        HttpUtil.getInstance().request(Api.getDefault(Api.LIVEHOST, ApiHome.class).getAllList(), new Subscriber<CommonBean<HomeLiveEntity>>() {
             @Override
             public void onCompleted() {
 
@@ -48,7 +41,7 @@ public class LiveViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onNext(Object o) {
+            public void onNext(CommonBean<HomeLiveEntity> o) {
                 data.setValue(o);
             }
         });

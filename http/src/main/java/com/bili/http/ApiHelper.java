@@ -11,8 +11,8 @@ public class ApiHelper {
 
     public static final String PARAM_SIGN = "sign";
 
-    public static final String APP_KEY = "c1b107428d337928";
-    public static final String BUILD = "51900";
+    public static final String APP_KEY = "1d8b6e7d45233436";
+    public static final String BUILD = "519000";
     public static final String MOBI_APP = "android";
     public static final String PLATFORM = "android";
     public static final String DEVICE = "android";
