@@ -5,11 +5,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bili.base.entity.home.HomeLiveEntity;
 import com.bili.base.entity.home.LiveMultiItemEntity;
+import com.bili.base.widget.RecycleGridDivider;
 import com.bili.home.R;
 import com.bili.home.databinding.ItemLiveBannerBinding;
+import com.bili.home.databinding.ItemLiveBinding;
+import com.bili.home.databinding.ItemLiveListBinding;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
@@ -30,7 +35,7 @@ public class LiveAdapter extends BaseMultiItemQuickAdapter<LiveMultiItemEntity, 
     public LiveAdapter(@Nullable List<LiveMultiItemEntity> data) {
         super(data);
         addItemType(LiveMultiItemEntity.BANNER, R.layout.item_live_banner);
-        addItemType(LiveMultiItemEntity.LIST, R.layout.item_live);
+        addItemType(LiveMultiItemEntity.LIST, R.layout.item_live_list);
     }
 
     @Override
@@ -45,16 +50,21 @@ public class LiveAdapter extends BaseMultiItemQuickAdapter<LiveMultiItemEntity, 
     }
 
     @Override
-    protected void convert(@NotNull BaseViewHolder holder, @Nullable LiveMultiItemEntity liveMultiItemEntity) {
-        switch (liveMultiItemEntity.getItemType()) {
+    protected void convert(@NotNull BaseViewHolder holder, @Nullable LiveMultiItemEntity entity) {
+        switch (entity.getItemType()) {
             case LiveMultiItemEntity.BANNER:
                 ItemLiveBannerBinding bannerBinding = holder.getBinding();
                 bannerBinding.banner.setImageLoader(new GlideImageLoader());
-                bannerBinding.banner.setImages(liveMultiItemEntity.mBannerBeans);
+                bannerBinding.banner.setImages(entity.mBannerBeans);
                 bannerBinding.banner.start();
                 break;
             case LiveMultiItemEntity.LIST:
-
+                ItemLiveListBinding liveListBinding = holder.getBinding();
+                LiveChildAdapter childAdapter = new LiveChildAdapter(entity.mPartitionsBean.getLives());
+                liveListBinding.rv.setAdapter(childAdapter);
+                liveListBinding.rv.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false));
+                liveListBinding.rv.addItemDecoration(new RecycleGridDivider(10));
+                liveListBinding.tvType.setText(entity.mPartitionsBean.getPartition().getName());
                 break;
         }
     }

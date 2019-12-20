@@ -45,9 +45,15 @@ public class LiveFragment extends BaseMVVMFragment<LiveViewModel, FragmentLiveBi
         mViewModel.getData().observe(this, new Observer<CommonBean<HomeLiveEntity>>() {
             @Override
             public void onChanged(CommonBean<HomeLiveEntity> entityCommonBean) {
-                LiveMultiItemEntity entity = new LiveMultiItemEntity(LiveMultiItemEntity.BANNER);
-                entity.mBannerBeans = entityCommonBean.data.getBanner();
-                mEntities.add(entity);
+                LiveMultiItemEntity entityBannner = new LiveMultiItemEntity(LiveMultiItemEntity.BANNER);
+                entityBannner.mBannerBeans = entityCommonBean.data.getBanner();
+                mEntities.add(entityBannner);
+
+                for (int i = 0; i < entityCommonBean.data.getPartitions().size(); i++) {
+                    LiveMultiItemEntity entityList = new LiveMultiItemEntity(LiveMultiItemEntity.LIST);
+                    entityList.mPartitionsBean = entityCommonBean.data.getPartitions().get(i);
+                    mEntities.add(entityList);
+                }
                 mLiveAdapter.notifyDataSetChanged();
             }
         });

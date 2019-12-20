@@ -17,6 +17,22 @@ public class LiveMultiItemEntity implements MultiItemEntity {
     public List<HomeLiveEntity.BannerBean> mBannerBeans;
     public HomeLiveEntity.PartitionsBean mPartitionsBean;
 
+    public List<HomeLiveEntity.BannerBean> getmBannerBeans() {
+        return mBannerBeans;
+    }
+
+    public void setmBannerBeans(List<HomeLiveEntity.BannerBean> mBannerBeans) {
+        this.mBannerBeans = mBannerBeans;
+    }
+
+    public HomeLiveEntity.PartitionsBean getmPartitionsBean() {
+        return mPartitionsBean;
+    }
+
+    public void setmPartitionsBean(HomeLiveEntity.PartitionsBean mPartitionsBean) {
+        this.mPartitionsBean = mPartitionsBean;
+    }
+
     public LiveMultiItemEntity(int itemType) {
         this.itemType = itemType;
     }
