@@ -1,20 +1,18 @@
 package com.bili.home.live;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 
 import com.bili.base.entity.home.HomeLiveEntity;
 import com.bili.base.entity.home.LiveMultiItemEntity;
 import com.bili.home.R;
+import com.bili.home.databinding.ItemLiveBannerBinding;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
-import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 
 import org.jetbrains.annotations.NotNull;
@@ -36,13 +34,24 @@ public class LiveAdapter extends BaseMultiItemQuickAdapter<LiveMultiItemEntity, 
     }
 
     @Override
+    protected void onItemViewHolderCreated(@NotNull BaseViewHolder viewHolder, int viewType) {
+        DataBindingUtil.bind(viewHolder.itemView);
+    }
+
+    @NotNull
+    @Override
+    protected BaseViewHolder createBaseViewHolder(@NotNull ViewGroup parent, int layoutResId) {
+        return super.createBaseViewHolder(parent, layoutResId);
+    }
+
+    @Override
     protected void convert(@NotNull BaseViewHolder holder, @Nullable LiveMultiItemEntity liveMultiItemEntity) {
         switch (liveMultiItemEntity.getItemType()) {
             case LiveMultiItemEntity.BANNER:
-                Banner banner = holder.getView(R.id.banner);
-                banner.setImageLoader(new GlideImageLoader());
-                banner.setImages(liveMultiItemEntity.mBannerBeans);
-                banner.start();
+                ItemLiveBannerBinding bannerBinding = holder.getBinding();
+                bannerBinding.banner.setImageLoader(new GlideImageLoader());
+                bannerBinding.banner.setImages(liveMultiItemEntity.mBannerBeans);
+                bannerBinding.banner.start();
                 break;
             case LiveMultiItemEntity.LIST:
 
