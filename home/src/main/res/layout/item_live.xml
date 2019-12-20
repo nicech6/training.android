@@ -16,10 +16,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/config_color_white"
             android:textSize="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="@id/iv_cover"
@@ -30,13 +31,22 @@
             android:id="@+id/tv_online"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/config_color_white"
             android:textSize="@dimen/dp_10"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/iv_cover"
             app:layout_constraintRight_toRightOf="parent"
             tools:text="1000" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/config_color_text_33"
+            android:textSize="12dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -76,7 +76,7 @@ public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBi
             public IPagerTitleView getTitleView(Context context, final int index) {
                 BadgePagerTitleView badgePagerTitleView = new BadgePagerTitleView(context);
                 SizePageTitleView sizePageTitleView = new SizePageTitleView(context);
-                sizePageTitleView.setNormalColor(getResources().getColor(R.color.config_color_text_33));
+                sizePageTitleView.setNormalColor(getResources().getColor(R.color.config_color_text_66));
                 sizePageTitleView.setSelectedColor(getResources().getColor(R.color.config_color_white));
                 sizePageTitleView.setText(titles[index]);
                 sizePageTitleView.setOnClickListener(new View.OnClickListener() {

@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bili.base.entity.home.HomeLiveEntity;
 import com.bili.base.entity.home.LiveMultiItemEntity;
+import com.bili.base.widget.GlideRoundTransform;
 import com.bili.base.widget.RecycleGridDivider;
 import com.bili.home.R;
 import com.bili.home.databinding.ItemLiveBannerBinding;
 import com.bili.home.databinding.ItemLiveBinding;
 import com.bili.home.databinding.ItemLiveListBinding;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.youth.banner.loader.ImageLoader;
@@ -73,6 +75,11 @@ public class LiveAdapter extends BaseMultiItemQuickAdapter<LiveMultiItemEntity, 
         @Override
         public void displayImage(Context context, Object path, ImageView imageView) {
             Glide.with(context).load(((HomeLiveEntity.BannerBean) path).getImg()).into(imageView);
+            Glide.with(getContext())
+                    .load(((HomeLiveEntity.BannerBean) path).getImg())
+                    .transform(new CenterCrop(), new GlideRoundTransform(12))
+                    .into(imageView);
+
         }
     }
 }
