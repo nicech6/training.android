@@ -7,13 +7,17 @@ package com.bili.base.constant;
  * @email: nicech6@163.com
  */
 public class Path {
-    public static final String APP_MAIN = "/app/main";
+    public static final String APP_MAIN = "/app/activity/main";
     //login
-    public static final String LOGIN_MAI = "/login/main";
+    public static final String LOGIN_MAI = "/login/activity/main";
 
-    public static final String HOME = "/home/main/fragment";
+    public static final String APP_HOME = "/home/fragment/main";
 
-    public static final String HOME_LIVE = "/home/live/fragment";
+    public static final String HOME_LIVE = "/home/fragment/live";
 
-    public static final String MINE="/app/main/mine";
+    public static final String HOME_TEMP = "/home/fragment/temp";
+
+    public static final String APP_MINE = "/mine/fragment/main";
+
+
 }

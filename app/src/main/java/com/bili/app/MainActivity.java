@@ -59,10 +59,10 @@ public class MainActivity extends BaseMvpActivity {
     @Override
     protected void initData() {
         mFragmentList = new ArrayList<>();
-        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.HOME).navigation();
-        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
-        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
-        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.MINE).navigation();
+        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.APP_HOME).navigation();
+        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
+        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
+        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
         mFragmentList.add(fragment);
         mFragmentList.add(fragment1);
         mFragmentList.add(fragment2);

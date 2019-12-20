@@ -10,9 +10,9 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.gyf.immersionbar.ImmersionBar;
 import com.bili.base.BaseActivity;
 import com.bili.base.R;
+import com.gyf.immersionbar.ImmersionBar;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -37,7 +37,7 @@ public abstract class BaseMVVMActivity<VM extends AndroidViewModel, V extends Vi
         initViewModel();
         if (immersion()) {
             ImmersionBar.with(this)
-                    .statusBarColor(R.color.config_color_white)
+                    .statusBarColor(R.color.theme_color_primary)
                     .navigationBarColor(R.color.config_color_black)
                     .statusBarDarkFont(true)
                     .fitsSystemWindows(true)

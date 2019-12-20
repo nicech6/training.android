@@ -21,7 +21,7 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
         mPresenter = initPresenter();
         if (immersion()) {
             ImmersionBar.with(this)
-                    .statusBarColor(R.color.config_color_white)
+                    .statusBarColor(R.color.theme_color_primary)
                     .navigationBarColor(R.color.config_color_black)
                     .statusBarDarkFont(true)
                     .fitsSystemWindows(true)

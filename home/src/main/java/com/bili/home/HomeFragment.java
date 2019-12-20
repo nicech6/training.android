@@ -35,10 +35,10 @@ import java.util.List;
  * @date: 2019/12/16
  * @email: nicech6@163.com
  */
-@Route(path = Path.HOME)
+@Route(path = Path.APP_HOME)
 public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBinding> {
     private List<Fragment> mFragments = new ArrayList<>();
-    private String[] titles = new String[]{"推荐", "热门", "追番", "影视"};
+    private String[] titles = new String[]{"推荐", "热门", "追番", "影视","直播"};
 
     @Override
     protected void bindEvent() {
@@ -53,15 +53,18 @@ public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBi
     @Override
     protected void initData() {
         Fragment fragment = (Fragment) ARouter.getInstance().build(Path.HOME_LIVE).navigation();
-        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.HOME_LIVE).navigation();
-        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.HOME_LIVE).navigation();
-        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.HOME_LIVE).navigation();
+        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
+        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
+        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
+        Fragment fragment4 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
         mFragments.add(fragment);
         mFragments.add(fragment1);
         mFragments.add(fragment2);
         mFragments.add(fragment3);
+        mFragments.add(fragment4);
 
         final CommonNavigator commonNavigator = new CommonNavigator(mContext);
+        commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
 
             @Override
@@ -74,7 +77,7 @@ public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBi
                 BadgePagerTitleView badgePagerTitleView = new BadgePagerTitleView(context);
                 SizePageTitleView sizePageTitleView = new SizePageTitleView(context);
                 sizePageTitleView.setNormalColor(getResources().getColor(R.color.config_color_text_33));
-                sizePageTitleView.setSelectedColor(getResources().getColor(R.color.theme_color_primary));
+                sizePageTitleView.setSelectedColor(getResources().getColor(R.color.config_color_white));
                 sizePageTitleView.setText(titles[index]);
                 sizePageTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override

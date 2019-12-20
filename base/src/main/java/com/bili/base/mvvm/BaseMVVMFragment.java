@@ -42,7 +42,10 @@ public abstract class BaseMVVMFragment<VM extends AndroidViewModel, V extends Vi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBindingView = DataBindingUtil.inflate(inflater, initContentView(inflater, container, savedInstanceState), container, false);
         initViewModel();
-        return mBindingView.getRoot();
+        if (mBindingView != null) {
+            return mBindingView.getRoot();
+        }
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override
