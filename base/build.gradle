@@ -61,6 +61,7 @@ dependencies {
     api rootProject.ext.dependencies.glide
     api rootProject.ext.dependencies.banner
     api rootProject.ext.dependencies.adapter
+    api rootProject.ext.dependencies.smartrefresh
     api rootProject.ext.dependencies["magic-tablayout"]
     api rootProject.ext.dependencies["flyco-tablayout"]
 }

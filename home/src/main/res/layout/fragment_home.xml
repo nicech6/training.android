@@ -10,7 +10,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/config_color_bg_f7"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_behavior="com.bili.base.widget.FixBounceV26Behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/rl_filter"
@@ -36,8 +37,8 @@
                     android:layout_height="30dp"
                     android:layout_marginLeft="16dp"
                     android:background="@drawable/shape_20dp_f7"
-                    android:hint="搜索"
                     android:focusable="false"
+                    android:hint="搜索"
                     android:paddingLeft="16dp"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
