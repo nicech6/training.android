@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,6 +18,9 @@ import com.bili.base.mvvm.BaseMVVMFragment;
 import com.bili.home.R;
 import com.bili.home.databinding.FragmentLiveBinding;
 import com.bili.http.CommonBean;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,22 +49,53 @@ public class LiveFragment extends BaseMVVMFragment<LiveViewModel, FragmentLiveBi
         mViewModel.getData().observe(this, new Observer<CommonBean<HomeLiveEntity>>() {
             @Override
             public void onChanged(CommonBean<HomeLiveEntity> entityCommonBean) {
-                LiveMultiItemEntity entityBannner = new LiveMultiItemEntity(LiveMultiItemEntity.BANNER);
-                entityBannner.mBannerBeans = entityCommonBean.data.getBanner();
-                mEntities.add(entityBannner);
-
-                for (int i = 0; i < entityCommonBean.data.getPartitions().size(); i++) {
-                    LiveMultiItemEntity entityList = new LiveMultiItemEntity(LiveMultiItemEntity.LIST);
-                    entityList.mPartitionsBean = entityCommonBean.data.getPartitions().get(i);
-                    mEntities.add(entityList);
-                }
-                mLiveAdapter.notifyDataSetChanged();
+                setData(entityCommonBean, false);
             }
         });
     }
 
+    private void setData(CommonBean<HomeLiveEntity> entityCommonBean, boolean loadMore) {
+        if (!loadMore) {
+            mEntities.clear();
+            mBindingView.srl.finishRefresh();
+        } else {
+            mBindingView.srl.finishLoadMore();
+        }
+        LiveMultiItemEntity entityBannner = new LiveMultiItemEntity(LiveMultiItemEntity.BANNER);
+        entityBannner.mBannerBeans = entityCommonBean.data.getBanner();
+        mEntities.add(entityBannner);
+
+        for (int i = 0; i < entityCommonBean.data.getPartitions().size(); i++) {
+            LiveMultiItemEntity entityList = new LiveMultiItemEntity(LiveMultiItemEntity.LIST);
+            entityList.mPartitionsBean = entityCommonBean.data.getPartitions().get(i);
+            mEntities.add(entityList);
+        }
+        mLiveAdapter.notifyDataSetChanged();
+    }
+
     @Override
     protected void bindEvent() {
-
+        mBindingView.srl.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                mViewModel.getData().observe(LiveFragment.this, new Observer<CommonBean<HomeLiveEntity>>() {
+                    @Override
+                    public void onChanged(CommonBean<HomeLiveEntity> entityCommonBean) {
+                        setData(entityCommonBean, false);
+                    }
+                });
+            }
+        });
+        mBindingView.srl.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                mViewModel.getData().observe(LiveFragment.this, new Observer<CommonBean<HomeLiveEntity>>() {
+                    @Override
+                    public void onChanged(CommonBean<HomeLiveEntity> entityCommonBean) {
+                        setData(entityCommonBean, true);
+                    }
+                });
+            }
+        });
     }
 }

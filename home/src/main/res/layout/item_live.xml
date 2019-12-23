@@ -50,5 +50,16 @@
             app:layout_constraintRight_toRightOf="parent"
             tools:text="1000" />
 
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/config_color_text_33"
+            android:textSize="12dp"
+            android:text="@{live.title}"
+            app:layout_constraintTop_toBottomOf="@id/iv_cover" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

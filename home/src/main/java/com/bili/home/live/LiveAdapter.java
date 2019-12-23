@@ -62,7 +62,9 @@ public class LiveAdapter extends BaseMultiItemQuickAdapter<LiveMultiItemEntity, 
                 LiveChildAdapter childAdapter = new LiveChildAdapter(entity.mPartitionsBean.getLives());
                 liveListBinding.rv.setAdapter(childAdapter);
                 liveListBinding.rv.setLayoutManager(new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false));
-                liveListBinding.rv.addItemDecoration(new RecycleGridDivider(10));
+                if (liveListBinding.rv.getItemDecorationCount() <= 0) {
+                    liveListBinding.rv.addItemDecoration(new RecycleGridDivider(10));
+                }
                 liveListBinding.tvType.setText(entity.mPartitionsBean.getPartition().getName());
                 break;
         }
