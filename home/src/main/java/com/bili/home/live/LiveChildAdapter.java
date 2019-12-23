@@ -3,9 +3,10 @@ package com.bili.home.live;
 import androidx.databinding.DataBindingUtil;
 
 import com.bili.base.entity.home.HomeLiveEntity;
+import com.bili.base.widget.GlideUtil;
+import com.bili.home.BR;
 import com.bili.home.R;
 import com.bili.home.databinding.ItemLiveBinding;
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 
@@ -27,7 +28,7 @@ public class LiveChildAdapter extends BaseQuickAdapter<HomeLiveEntity.Partitions
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, @Nullable HomeLiveEntity.PartitionsBean.LivesBeanXX beanXX) {
         ItemLiveBinding binding = baseViewHolder.getBinding();
-        Glide.with(getContext()).load((beanXX.getCover())).into(binding.ivCover);
-
+        binding.setVariable(com.bili.home.BR.live,beanXX);
+        binding.executePendingBindings();
     }
 }

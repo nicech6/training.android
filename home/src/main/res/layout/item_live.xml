@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+
+        <variable
+            name="live"
+            type="com.bili.base.entity.home.HomeLiveEntity.PartitionsBean.LivesBeanXX" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -12,6 +20,8 @@
             android:id="@+id/iv_cover"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:displayRound="@{live.cover}"
+            android:radius="@{10}"
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
             android:layout_marginBottom="12dp"
+            android:text="@{live.area_v2_name}"
             android:textColor="@color/config_color_white"
             android:textSize="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="@id/iv_cover"
@@ -32,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
             android:layout_marginBottom="12dp"
+            android:text="@{String.valueOf(live.online)}"
             android:textColor="@color/config_color_white"
             android:textSize="@dimen/dp_10"
             app:layout_constraintBottom_toBottomOf="parent"
