@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:background="@color/config_color_bg_f7"
             android:orientation="vertical"
-            app:layout_behavior="com.bili.base.widget.FixBounceV26Behavior">
+            app:layout_behavior="com.cuihai.base.widget.FixBounceV26Behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/rl_filter"

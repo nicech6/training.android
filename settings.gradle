@@ -1,2 +1,2 @@
 include ':app', ':login', ':base', ':http', ':home', ':mine'
-rootProject.name='Life'
+rootProject.name='Demo'

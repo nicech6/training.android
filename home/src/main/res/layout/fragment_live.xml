@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.bili.base.entity.home.LiveMultiItemEntity" />
+            type="com.cuihai.base.entity.home.LiveMultiItemEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

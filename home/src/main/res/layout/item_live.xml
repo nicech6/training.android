@@ -5,7 +5,7 @@
 
         <variable
             name="live"
-            type="com.bili.base.entity.home.HomeLiveEntity.PartitionsBean.LivesBeanXX" />
+            type="com.cuihai.base.entity.home.HomeLiveEntity.PartitionsBean.LivesBeanXX" />
 
     </data>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.bili.base.widget.NoScrollViewPager
+    <com.cuihai.base.widget.NoScrollViewPager
         android:id="@+id/viewpager"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.bili.base.widget.LineView
+    <com.cuihai.base.widget.LineView
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
