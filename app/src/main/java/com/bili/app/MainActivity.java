@@ -5,14 +5,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.flyco.tablayout.CommonTabLayout;
-import com.flyco.tablayout.listener.CustomTabEntity;
-import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.bili.base.constant.Path;
 import com.bili.base.mvp.BaseMvpActivity;
 import com.bili.base.mvp.BasePresenter;
 import com.bili.base.widget.BaseViewPageAdapter;
 import com.bili.base.widget.TabEntity;
+import com.flyco.tablayout.CommonTabLayout;
+import com.flyco.tablayout.listener.CustomTabEntity;
+import com.flyco.tablayout.listener.OnTabSelectListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +23,12 @@ import java.util.List;
  * @date: 2019/12/14
  * @email: nicech6@163.com
  */
-@Route(path = Path.APP_MAIN)
+@Route(path = Path.App.MAIN)
 public class MainActivity extends BaseMvpActivity {
     private CommonTabLayout mTabLayout;
     private ViewPager mViewPager;
-    private String titles[] = new String[]{"首页", "频道","动态","我的"};
-    private int selectedIds[] = new int[]{  R.mipmap.ic_home_selected, R.mipmap.ic_category_selected,
+    private String titles[] = new String[]{"首页", "频道", "动态", "我的"};
+    private int selectedIds[] = new int[]{R.mipmap.ic_home_selected, R.mipmap.ic_category_selected,
             R.mipmap.ic_dynamic_selected, R.mipmap.ic_communicate_selected};
     private int unSelectedIds[] = new int[]{R.mipmap.ic_home_unselected, R.mipmap.ic_category_unselected,
             R.mipmap.ic_dynamic_unselected, R.mipmap.ic_communicate_unselected};
@@ -59,10 +59,10 @@ public class MainActivity extends BaseMvpActivity {
     @Override
     protected void initData() {
         mFragmentList = new ArrayList<>();
-        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.APP_HOME).navigation();
-        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
-        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
-        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.APP_MINE).navigation();
+        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.Home.MAIN).navigation();
+        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.Mine.MAIN).navigation();
+        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.Mine.MAIN).navigation();
+        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.Mine.MAIN).navigation();
         mFragmentList.add(fragment);
         mFragmentList.add(fragment1);
         mFragmentList.add(fragment2);

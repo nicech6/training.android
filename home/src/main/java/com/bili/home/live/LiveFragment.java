@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -31,7 +30,7 @@ import java.util.List;
  * @date: 2019/12/19
  * @email: nicech6@163.com
  */
-@Route(path = Path.HOME_LIVE)
+@Route(path = Path.Home.LIVE)
 public class LiveFragment extends BaseMVVMFragment<LiveViewModel, FragmentLiveBinding> {
     private LiveAdapter mLiveAdapter;
     private List<LiveMultiItemEntity> mEntities = new ArrayList<>();

@@ -39,7 +39,7 @@ public class BootActivity extends BaseMVVMActivity<BootViewModel, ActivityBootBi
                         .transition(DrawableTransitionOptions.withCrossFade(1500))
                         .into(mBindingView.iv);
                 new Handler().postDelayed(() -> {
-                    ARouter.getInstance().build(Path.APP_MAIN).navigation();
+                    ARouter.getInstance().build(Path.App.MAIN).navigation();
                     finish();
                 }, 2000);
             }

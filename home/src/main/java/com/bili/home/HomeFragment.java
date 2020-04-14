@@ -35,7 +35,7 @@ import java.util.List;
  * @date: 2019/12/16
  * @email: nicech6@163.com
  */
-@Route(path = Path.APP_HOME)
+@Route(path = Path.Home.MAIN)
 public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBinding> {
     private List<Fragment> mFragments = new ArrayList<>();
     private String[] titles = new String[]{"推荐", "热门", "追番", "影视","直播"};
@@ -52,11 +52,11 @@ public class HomeFragment extends BaseMVVMFragment<HomeViewModel, FragmentHomeBi
 
     @Override
     protected void initData() {
-        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.HOME_LIVE).navigation();
-        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
-        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
-        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
-        Fragment fragment4 = (Fragment) ARouter.getInstance().build(Path.HOME_TEMP).navigation();
+        Fragment fragment = (Fragment) ARouter.getInstance().build(Path.Home.LIVE).navigation();
+        Fragment fragment1 = (Fragment) ARouter.getInstance().build(Path.Home.TEMP).navigation();
+        Fragment fragment2 = (Fragment) ARouter.getInstance().build(Path.Home.TEMP).navigation();
+        Fragment fragment3 = (Fragment) ARouter.getInstance().build(Path.Home.TEMP).navigation();
+        Fragment fragment4 = (Fragment) ARouter.getInstance().build(Path.Home.TEMP).navigation();
         mFragments.add(fragment);
         mFragments.add(fragment1);
         mFragments.add(fragment2);

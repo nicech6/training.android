@@ -16,7 +16,7 @@ import com.bili.base.mvvm.BaseMVVMFragment;
  * @date: 2019/12/20
  * @email: nicech6@163.com
  */
-@Route(path = Path.APP_MINE)
+@Route(path = Path.Mine.MAIN)
 public class MineFragment extends BaseMVVMFragment {
     @Override
     public int initContentView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

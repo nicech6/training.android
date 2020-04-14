@@ -18,7 +18,7 @@ import com.bili.login.LoginPresenter
 import com.bili.login.R
 import kotlinx.android.synthetic.main.activity_login.*
 
-@Route(path = Path.LOGIN_MAI)
+@Route(path = Path.Login.MAIN)
 class LoginMvpActivity : BaseMvpActivity<LoginPresenter>(), LoginContact.View {
 
     companion object {
