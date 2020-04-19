@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.cuihai.base.widget.LineView
+    <com.cuihai.base.widget.CommonDivideView
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

@@ -1,4 +1,4 @@
-package com.life.login
+package com.cuihai.login
 
 
 import android.Manifest
@@ -13,9 +13,6 @@ import com.cuihai.base.permission.annotation.OnMPermissionDenied
 import com.cuihai.base.permission.annotation.OnMPermissionGranted
 import com.cuihai.base.permission.annotation.OnMPermissionNeverAskAgain
 import com.cuihai.base.util.ToastUtils
-import com.cuihai.login.LoginContact
-import com.cuihai.login.LoginPresenter
-import com.cuihai.login.R
 import kotlinx.android.synthetic.main.activity_login.*
 
 @Route(path = Path.Login.MAIN)
@@ -52,7 +49,7 @@ class LoginMvpActivity : BaseMvpActivity<LoginPresenter>(), LoginContact.View {
     }
 
     private fun onPermissionChecked() {
-        finish()
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, @NonNull permissions: Array<String>, @NonNull grantResults: IntArray) {

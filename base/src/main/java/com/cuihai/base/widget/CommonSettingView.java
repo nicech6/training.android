@@ -22,7 +22,7 @@ import com.cuihai.base.util.SizeUtils;
  * @company:
  * @email: nicech6@163.com
  */
-public class MineInfoView extends RelativeLayout {
+public class CommonSettingView extends RelativeLayout {
     private Context mContext;
     private TextView mLeftTextView;
     private TextView mCenterTextView;
@@ -43,32 +43,32 @@ public class MineInfoView extends RelativeLayout {
     private int mCenterTextViewMarginLeft;
     private boolean mGoneRightImageView;
 
-    public MineInfoView(Context context) {
+    public CommonSettingView(Context context) {
         this(context, null);
     }
 
-    public MineInfoView(Context context, AttributeSet attrs) {
+    public CommonSettingView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public MineInfoView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CommonSettingView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MineInfoView);
-        mLeftText = a.getString(R.styleable.MineInfoView_tv_left);
-        mCenterText = a.getString(R.styleable.MineInfoView_tv_center);
-        mRightText = a.getString(R.styleable.MineInfoView_tv_right);
-        mCenterTextHint = a.getString(R.styleable.MineInfoView_tv_center_hint);
-        mDrawableRight = a.getResourceId(R.styleable.MineInfoView_iv_right, 0);
-        mDrawableLeft = a.getResourceId(R.styleable.MineInfoView_iv_left, 0);
-        mGoneRightImageView = a.getBoolean(R.styleable.MineInfoView_iv_right_gone, false);
-        mTvColorLeft = a.getColor(R.styleable.MineInfoView_tv_color_left, getResources().getColor(R.color.config_color_text_33));
-        mTvColorCenter = a.getColor(R.styleable.MineInfoView_tv_color_center, getResources().getColor(R.color.config_color_text_33));
-        mTvColorRight = a.getColor(R.styleable.MineInfoView_tv_right_color, getResources().getColor(R.color.config_color_text_99));
-        mLeftTextSize = (int) a.getDimension(R.styleable.MineInfoView_tv_size_left, 14);
-        mCenterTextSize = (int) a.getDimension(R.styleable.MineInfoView_tv_size_center, 14);
-        mRightTextSize = (int) a.getDimension(R.styleable.MineInfoView_tv_right_size, 14);
-        mCenterTextViewMarginLeft = (int) a.getDimension(R.styleable.MineInfoView_tv_center_margin, 0);
-        mDrawableCenter = a.getResourceId(R.styleable.MineInfoView_iv_center, 0);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonSettingView);
+        mLeftText = a.getString(R.styleable.CommonSettingView_tv_left);
+        mCenterText = a.getString(R.styleable.CommonSettingView_tv_center);
+        mRightText = a.getString(R.styleable.CommonSettingView_tv_right);
+        mCenterTextHint = a.getString(R.styleable.CommonSettingView_tv_center_hint);
+        mDrawableRight = a.getResourceId(R.styleable.CommonSettingView_iv_right, 0);
+        mDrawableLeft = a.getResourceId(R.styleable.CommonSettingView_iv_left, 0);
+        mGoneRightImageView = a.getBoolean(R.styleable.CommonSettingView_iv_right_gone, false);
+        mTvColorLeft = a.getColor(R.styleable.CommonSettingView_tv_color_left, getResources().getColor(R.color.config_color_text_33));
+        mTvColorCenter = a.getColor(R.styleable.CommonSettingView_tv_color_center, getResources().getColor(R.color.config_color_text_33));
+        mTvColorRight = a.getColor(R.styleable.CommonSettingView_tv_right_color, getResources().getColor(R.color.config_color_text_99));
+        mLeftTextSize = (int) a.getDimension(R.styleable.CommonSettingView_tv_size_left, 14);
+        mCenterTextSize = (int) a.getDimension(R.styleable.CommonSettingView_tv_size_center, 14);
+        mRightTextSize = (int) a.getDimension(R.styleable.CommonSettingView_tv_right_size, 14);
+        mCenterTextViewMarginLeft = (int) a.getDimension(R.styleable.CommonSettingView_tv_center_margin, 0);
+        mDrawableCenter = a.getResourceId(R.styleable.CommonSettingView_iv_center, 0);
         mContext = context;
         a.recycle();
         initView(context);

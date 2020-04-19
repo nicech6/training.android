@@ -92,4 +92,8 @@
     <color name="theme_color_secondary">#fffb7299</color>
     <color name="theme_color_secondary_dark">#ffb85671</color>
     <color name="theme_color_text_highlight">#99f0486c</color>
+
+    <color name="orange_FF9C1D">#FF9C1D</color>
+    <color name="accent_orange">#FF7700</color>
+
 </resources>

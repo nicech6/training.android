@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.cuihai.base.R;
 
-public class TitleView extends RelativeLayout {
+public class CommonTitleView extends RelativeLayout {
     private Context context;
     private int mCenterTextSize;
     private int mLeftTextSize;
@@ -33,29 +33,29 @@ public class TitleView extends RelativeLayout {
     private int mRightTextViewColor;
 
 
-    public TitleView(Context context) {
+    public CommonTitleView(Context context) {
         this(context, null);
     }
 
-    public TitleView(Context context, AttributeSet attrs) {
+    public CommonTitleView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public TitleView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CommonTitleView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.TitleView, defStyleAttr, 0);
-        mLeftTextSize = array.getDimensionPixelSize(R.styleable.TitleView_title_left_size, 14);
-        mCenterTextSize = array.getDimensionPixelSize(R.styleable.TitleView_title_center_size, 16);
-        mRightTextSize = array.getDimensionPixelSize(R.styleable.TitleView_title_right_size, 14);
-        mTextLeft = array.getString(R.styleable.TitleView_title_left_str);
-        mTextCenter = array.getString(R.styleable.TitleView_title_center_str);
-        mTextRight = array.getString(R.styleable.TitleView_title_right_str);
-        mLeftBackDrawableRes = array.getResourceId(R.styleable.TitleView_title_left_drawable, R.mipmap.icon_back);
-        mCenterDrawableRes = array.getResourceId(R.styleable.TitleView_title_center_drawable, 0);
-        mRightDrawableRes = array.getResourceId(R.styleable.TitleView_title_right_drawable, 0);
-        mLeftTextViewColor = array.getColor(R.styleable.TitleView_title_left_color, context.getResources().getColor(R.color.config_color_gray_3));
-        mCenterTextViewColor = array.getColor(R.styleable.TitleView_title_center_color, context.getResources().getColor(R.color.config_color_gray_3));
-        mRightTextViewColor = array.getColor(R.styleable.TitleView_title_right_color, context.getResources().getColor(R.color.config_color_gray_3));
+        TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.CommonTitleView, defStyleAttr, 0);
+        mLeftTextSize = array.getDimensionPixelSize(R.styleable.CommonTitleView_title_left_size, 14);
+        mCenterTextSize = array.getDimensionPixelSize(R.styleable.CommonTitleView_title_center_size, 16);
+        mRightTextSize = array.getDimensionPixelSize(R.styleable.CommonTitleView_title_right_size, 14);
+        mTextLeft = array.getString(R.styleable.CommonTitleView_title_left_str);
+        mTextCenter = array.getString(R.styleable.CommonTitleView_title_center_str);
+        mTextRight = array.getString(R.styleable.CommonTitleView_title_right_str);
+        mLeftBackDrawableRes = array.getResourceId(R.styleable.CommonTitleView_title_left_drawable, R.mipmap.icon_back);
+        mCenterDrawableRes = array.getResourceId(R.styleable.CommonTitleView_title_center_drawable, 0);
+        mRightDrawableRes = array.getResourceId(R.styleable.CommonTitleView_title_right_drawable, 0);
+        mLeftTextViewColor = array.getColor(R.styleable.CommonTitleView_title_left_color, context.getResources().getColor(R.color.config_color_gray_3));
+        mCenterTextViewColor = array.getColor(R.styleable.CommonTitleView_title_center_color, context.getResources().getColor(R.color.config_color_gray_3));
+        mRightTextViewColor = array.getColor(R.styleable.CommonTitleView_title_right_color, context.getResources().getColor(R.color.config_color_gray_3));
 
         array.recycle();
         this.context = context;

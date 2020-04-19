@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="TitleView">
+    <declare-styleable name="CommonTitleView">
         <attr name="title_left_size" format="dimension" />
         <attr name="title_center_size" format="dimension" />
         <attr name="title_right_size" format="dimension" />
@@ -21,7 +21,15 @@
 
     </declare-styleable>
 
-    <declare-styleable name="MineInfoView">
+    <!--支持圆角的TextView-->
+    <declare-styleable name="CommonRoundTextView">
+        <attr name="rtvBgColor" format="color"/>
+        <attr name="rtvBorderWidth" format="dimension"/>
+        <attr name="rtvBorderColor" format="dimension"/>
+        <attr name="rtvRadius" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="CommonSettingView">
         <!-- 左边图片内容 -->
         <attr name="iv_left" format="reference" />
         <!--中间图片-->
@@ -54,7 +62,7 @@
         <attr name="tv_center_margin" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="LineView">
+    <declare-styleable name="CommonDivideView">
         <!--颜色-->
         <attr name="line_bg_color" format="color"></attr>
     </declare-styleable>

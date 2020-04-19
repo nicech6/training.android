@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- margin -->
+    <dimen name="dimen_0_3">-3dp</dimen>
+    <dimen name="dimen_0_5">-5dp</dimen>
+    <dimen name="dimen_0_8">-8dp</dimen>
+    <dimen name="dimen_0_10">-10dp</dimen>
+    <dimen name="dimen_0_12">-12dp</dimen>
+    <dimen name="px_1">1px</dimen>
+    <dimen name="dimen_0">0dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_6">6dp</dimen>
+    <dimen name="dimen_7">7dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_9">9dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_11">11dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_13">13dp</dimen>
+    <dimen name="dimen_14">14dp</dimen>
+    <dimen name="dimen_15">15dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_17">17dp</dimen>
+    <dimen name="dimen_18">18dp</dimen>
+    <dimen name="dimen_19">19dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_21">21dp</dimen>
+    <dimen name="dimen_22">22dp</dimen>
+    <dimen name="dimen_23">23dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_25">25dp</dimen>
+    <dimen name="dimen_26">26dp</dimen>
+    <dimen name="dimen_27">27dp</dimen>
+    <dimen name="dimen_28">28dp</dimen>
+    <dimen name="dimen_30">30dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_33">33dp</dimen>
+    <dimen name="dimen_35">35dp</dimen>
+    <dimen name="dimen_36">36dp</dimen>
+    <dimen name="dimen_38">38dp</dimen>
+    <dimen name="dimen_39">39dp</dimen>
+    <dimen name="dimen_40">40dp</dimen>
+    <dimen name="dimen_42">42dp</dimen>
+    <dimen name="dimen_45">45dp</dimen>
+    <dimen name="dimen_46">46dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_50">50dp</dimen>
+    <dimen name="dimen_51">51dp</dimen>
+    <dimen name="dimen_53">53dp</dimen>
+    <dimen name="dimen_55">55dp</dimen>
+    <dimen name="dimen_57">57dp</dimen>
+    <dimen name="dimen_52">52dp</dimen>
+    <dimen name="dimen_60">60dp</dimen>
+    <dimen name="dimen_64">64dp</dimen>
+    <dimen name="dimen_65">65dp</dimen>
+    <dimen name="dimen_66">66dp</dimen>
+    <dimen name="dimen_68">68dp</dimen>
+    <dimen name="dimen_70">70dp</dimen>
+    <dimen name="dimen_72">72dp</dimen>
+    <dimen name="dimen_75">75dp</dimen>
+    <dimen name="dimen_78">78dp</dimen>
+    <dimen name="dimen_80">80dp</dimen>
+    <dimen name="dimen_85">85dp</dimen>
+    <dimen name="dimen_90">90dp</dimen>
+    <dimen name="dimen_100">100dp</dimen>
+    <dimen name="dimen_108">108dp</dimen>
+    <dimen name="dimen_110">110dp</dimen>
+    <dimen name="dimen_120">120dp</dimen>
+    <dimen name="dimen_150">150dp</dimen>
+    <dimen name="dimen_160">160dp</dimen>
+    <dimen name="dimen_166">166dp</dimen>
+    <dimen name="dimen_180">180dp</dimen>
+    <dimen name="dimen_200">200dp</dimen>
+    <dimen name="dimen_220">220dp</dimen>
+    <dimen name="dimen_250">250dp</dimen>
+
+    <!--android默认的正常normal字体大小为16sp, 中号Medium字体18sp，小号Small字体14sp, 大号Large字体22sp-->
+    <!--字体规范-->
+    <dimen name="font_size_48">48sp</dimen>
+    <dimen name="font_size_30">30sp</dimen>
+    <dimen name="font_size_24">24sp</dimen>
+    <dimen name="font_size_25">25sp</dimen>
+    <dimen name="font_size_27">27sp</dimen>
+    <!--使用场景20dp：特殊字体，大号字体-->
+    <dimen name="font_size_20">20sp</dimen>
+    <dimen name="font_size_21">21sp</dimen>
+    <dimen name="font_size_22">22sp</dimen>
+    <dimen name="font_size_18">18sp</dimen>
+    <!--使用场景16dp：整行按钮，顶部标题，第一次标题（如用户昵称，列表选项，时间等）-->
+    <dimen name="font_size_16">16sp</dimen>
+    <!--使用场景13dp：文字-->
+    <dimen name="font_size_13">13sp</dimen>
+    <dimen name="font_size_11">11sp</dimen>
+    <!--使用场景14dp：文字按钮-->
+    <dimen name="font_size_14">14sp</dimen>
+    <dimen name="font_size_19">19sp</dimen>
+    <dimen name="font_size_17">17sp</dimen>
+    <dimen name="font_size_23">23sp</dimen>
+    <!--使用场景12dp：底部tab title，次一级的标题-->
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_10">10sp</dimen>
+    <dimen name="font_size_31">31sp</dimen>
+    <dimen name="font_size_34">34sp</dimen>
+    <!--使用场景8dp：日历文字-->
+    <dimen name="font_size_8">8sp</dimen>
+    <!--tab文字大小-->
+    <dimen name="font_size_15">15sp</dimen>
+</resources>

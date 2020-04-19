@@ -22,21 +22,21 @@ import com.cuihai.base.util.SizeUtils;
  * @company:
  * @email: nicech6@163.com
  */
-public class LineView extends View {
+public class CommonDivideView extends View {
     private int mLineColor;
 
-    public LineView(Context context) {
+    public CommonDivideView(Context context) {
         this(context, null);
     }
 
-    public LineView(Context context, @Nullable AttributeSet attrs) {
+    public CommonDivideView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public LineView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CommonDivideView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.LineView);
-        mLineColor = a.getColor(R.styleable.LineView_line_bg_color, context.getResources().getColor(R.color.config_color_line_d8));
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CommonDivideView);
+        mLineColor = a.getColor(R.styleable.CommonDivideView_line_bg_color, context.getResources().getColor(R.color.config_color_line_d8));
     }
 
     @Override
