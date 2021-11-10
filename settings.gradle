@@ -1,2 +1,3 @@
 include ':app', ':login', ':base', ':http', ':home', ':mine'
-rootProject.name='Demo'
+rootProject.name='life.android'
+include ':jni'

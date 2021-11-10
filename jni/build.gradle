@@ -1,17 +1,16 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 android {
-
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.cuihai.app"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
         versionName rootProject.ext.android.versionName
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         kapt {
@@ -19,19 +18,14 @@ android {
                 arg("AROUTER_MODULE_NAME", project.getName())
             }
         }
-        multiDexEnabled true
-
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
+        sourceSets {
+            main {
+                // Release模式下使用main文件夹中的清单文件
+                manifest.srcFile 'src/main/AndroidManifest.xml'
             }
         }
-
-        ndk {
-            abiFilters "armeabi-v7a", "arm64-v8a"
-        }
-
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -42,27 +36,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    dataBinding {
-        enabled = true
-    }
-    externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
-            version "3.10.2"
-        }
-    }
+
 }
 
 dependencies {
+    api project(':base')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':base')
-    implementation project(':home')
-    implementation project(':mine')
-    implementation project(':jni')
-    if (isNeedLoginModule.toBoolean()) {
-        implementation project(':login')
-    }
     kapt rootProject.ext.dependencies["arouter-compiler"]
-    kapt rootProject.ext.dependencies["glide-compile"]
     annotationProcessor rootProject.ext.dependencies.arouter
+    implementation rootProject.ext.dependencies.ktx
+    implementation rootProject.ext.dependencies["ktx-jdk"]
+
+}
+repositories {
+    mavenCentral()
 }
