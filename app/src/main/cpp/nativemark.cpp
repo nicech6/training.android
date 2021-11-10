@@ -69,7 +69,7 @@ jstring charToString(JNIEnv *env, const char *chr) {
     return (jstring) env->NewObject(strClass, strConstruct, bytes, encoding);
 }
 
-static const char *classPathName = "com.cuihai.jni/AdJniHelper";
+static const char *classPathName = "com/cuihai/jni/AdJniHelper";
 
 static const JNINativeMethod gMethods[] = {
         {"updateMark", "()Ljava/lang/String;", (void *) getUpdate},
