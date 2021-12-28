@@ -1,3 +1,2 @@
-include ':app', ':login', ':base', ':http', ':home', ':mine'
-rootProject.name='life.android'
-include ':jni'
+include ':app', ':login', ':base', ':http', ':home', ':mine', ':jni', ':demo'
+rootProject.name = 'life.android'

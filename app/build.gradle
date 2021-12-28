@@ -62,6 +62,9 @@ dependencies {
     if (isNeedLoginModule.toBoolean()) {
         implementation project(':login')
     }
+    if (isNeedDemoModule.toBoolean()) {
+        implementation project(':demo')
+    }
     kapt rootProject.ext.dependencies["arouter-compiler"]
     kapt rootProject.ext.dependencies["glide-compile"]
     annotationProcessor rootProject.ext.dependencies.arouter

@@ -1,0 +1,79 @@
+if (!isNeedDemoModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+//plugins {
+//    id 'org.jetbrains.kotlin:android' version '1.5.31'
+//}
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.0.5'
+    }
+    defaultConfig {
+        if (!isNeedLoginModule.toBoolean()) {
+            applicationId "com.life.demo"
+        }
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+        sourceSets {
+            main {
+                if (!isNeedLoginModule.toBoolean()) {
+                    // Module模式下使用debug文件夹中的清单文件
+                    manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+                } else {
+                    // Release模式下使用main文件夹中的清单文件
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                    // Release模式下排除debug文件夹中的Java文件
+                    java {
+                        exclude 'debug/**'
+                    }
+                }
+            }
+        }
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    api project(':base')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kapt rootProject.ext.dependencies["arouter-compiler"]
+    annotationProcessor rootProject.ext.dependencies.arouter
+    implementation rootProject.ext.dependencies.ktx
+    implementation rootProject.ext.dependencies["ktx-jdk"]
+
+}
+repositories {
+    mavenCentral()
+}
