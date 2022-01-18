@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     data class Message(val title: String, val subTitle: String)
 
     @Composable
