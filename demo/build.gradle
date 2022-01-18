@@ -6,9 +6,6 @@ if (!isNeedDemoModule.toBoolean()) {
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
-//plugins {
-//    id 'org.jetbrains.kotlin:android' version '1.5.31'
-//}
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildFeatures {
@@ -72,6 +69,23 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies.arouter
     implementation rootProject.ext.dependencies.ktx
     implementation rootProject.ext.dependencies["ktx-jdk"]
+    api 'androidx.compose.ui:ui:1.0.5'
+    // Tooling support (Previews, etc.)
+    api 'androidx.compose.ui:ui-tooling:1.0.5'
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    api 'androidx.compose.foundation:foundation:1.0.5'
+    // Material Design
+    api 'androidx.compose.material:material:1.0.5'
+    // Material design icons
+    api 'androidx.compose.material:material-icons-core:1.0.5'
+    api 'androidx.compose.material:material-icons-extended:1.0.5'
+    // Integration with activities
+    api 'androidx.activity:activity-compose:1.3.1'
+    // Integration with ViewModels
+    api 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
+    // Integration with observables
+    api 'androidx.compose.runtime:runtime-livedata:1.0.5'
+    api 'androidx.compose.runtime:runtime-rxjava2:1.0.5'
 
 }
 repositories {
