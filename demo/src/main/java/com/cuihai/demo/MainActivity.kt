@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
                 SampleData.conversationSample
             )
         }
+
     }
 
 
