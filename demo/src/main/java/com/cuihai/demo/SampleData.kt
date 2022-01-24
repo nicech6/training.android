@@ -1,6 +1,6 @@
 package com.cuihai.demo
 
-import com.cuihai.demo.MainActivity.Message
+import com.cuihai.demo.ComposableActivity.Message
 
 object SampleData {
     // Sample conversation data
