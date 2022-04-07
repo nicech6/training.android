@@ -6,6 +6,8 @@ if (!isNeedDemoModule.toBoolean()) {
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildFeatures {
@@ -86,6 +88,9 @@ dependencies {
     // Integration with observables
     api 'androidx.compose.runtime:runtime-livedata:1.0.5'
     api 'androidx.compose.runtime:runtime-rxjava2:1.0.5'
+    // hilt
+    api "com.google.dagger:hilt-android:2.28-alpha"
+    kapt "com.google.dagger:hilt-android-compiler:2.28-alpha"
 
 }
 repositories {

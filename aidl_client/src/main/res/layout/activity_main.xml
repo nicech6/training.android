@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.aidl.MainActivity">
+
+    <Button
+        android:id="@+id/btn_from_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击我请求aidl数据"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_from_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="此处显示数据"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_from_service"
+        app:layout_constraintLeft_toRightOf="@+id/btn_from_service"
+        app:layout_constraintTop_toTopOf="@+id/btn_from_service" />
+
+    <Button
+        android:id="@+id/btn_to_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击我传递数据到service"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_from_service" />
+
+    <TextView
+        android:id="@+id/tv_to_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="此处显示数据"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_to_service"
+        app:layout_constraintLeft_toRightOf="@+id/btn_to_service"
+        app:layout_constraintTop_toTopOf="@+id/btn_to_service" />
+
+    <Button
+        android:id="@+id/btn_to_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击开始一个ipc的activity"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_to_service" />
+
+    <TextView
+        android:id="@+id/tv_to_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@+id/btn_to_activity"
+        app:layout_constraintLeft_toRightOf="@+id/btn_to_activity"
+        app:layout_constraintTop_toTopOf="@+id/btn_to_activity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
