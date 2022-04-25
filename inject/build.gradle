@@ -1,0 +1,32 @@
+// 引用插件
+plugins {
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id "groovy"
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.cuh.inject'
+            artifactId = 'plugin-onclick'
+            version = '1.0.0'
+            from components.java
+        }
+    }
+
+    repositories {
+        maven {
+            url "${rootProject.projectDir}/repo"
+        }
+    }
+}
+
+dependencies {
+    api 'com.android.tools.build:gradle-api:7.0.2'
+    api 'com.android.tools.build:gradle:7.0.2'
+//    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+//    implementation project(':inject-internal')
+}

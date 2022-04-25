@@ -1,0 +1,12 @@
+// 引用插件
+plugins {
+//    id 'java-gradle-plugin'
+    id 'kotlin'
+//    id 'com.cuh.inject'
+}
+
+dependencies {
+    api 'com.android.tools.build:gradle-api:7.0.2'
+    api 'com.android.tools.build:gradle:7.0.2'
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
