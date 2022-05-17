@@ -1,0 +1,132 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "training.android",
+    "module": "inject",
+    "version": "unspecified",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1.1",
+      "buildId": "moahlpeitfampif77nfif2lzae"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle-api",
+          "version": {
+            "requires": "4.0.1"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "4.0.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "inject-unspecified.jar",
+          "url": "inject-unspecified.jar",
+          "size": 65811,
+          "sha512": "75ceaa8da059fb8a88f48ec29899cd55ef7104e3487cc921d2f27706947446fef89072b8d7cb10bad8eee81b8758f20199896a02480e9ea90a35c61af84d5b9d",
+          "sha256": "bb0b025c1b4cad4da0312f968b7126e72a9221c85ba6dfab37d862414584c7a5",
+          "sha1": "47a92c568ea00e3ea2e24072b008e326e2aded6c",
+          "md5": "39e8f6958835b67c07e821858929ec15"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 8,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.localToProject": "public",
+        "org.jetbrains.kotlin.platform.type": "jvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.ow2.asm",
+          "module": "asm",
+          "version": {
+            "requires": "7.2"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-tree",
+          "version": {
+            "requires": "7.2"
+          }
+        },
+        {
+          "group": "org.ow2.asm",
+          "module": "asm-commons",
+          "version": {
+            "requires": "7.2"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle-api",
+          "version": {
+            "requires": "4.0.1"
+          }
+        },
+        {
+          "group": "com.android.tools.build",
+          "module": "gradle",
+          "version": {
+            "requires": "4.0.1"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib-jdk8",
+          "version": {
+            "requires": "1.5.30"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "inject-unspecified.jar",
+          "url": "inject-unspecified.jar",
+          "size": 65811,
+          "sha512": "75ceaa8da059fb8a88f48ec29899cd55ef7104e3487cc921d2f27706947446fef89072b8d7cb10bad8eee81b8758f20199896a02480e9ea90a35c61af84d5b9d",
+          "sha256": "bb0b025c1b4cad4da0312f968b7126e72a9221c85ba6dfab37d862414584c7a5",
+          "sha1": "47a92c568ea00e3ea2e24072b008e326e2aded6c",
+          "md5": "39e8f6958835b67c07e821858929ec15"
+        }
+      ]
+    }
+  ]
+}

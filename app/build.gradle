@@ -5,9 +5,8 @@ apply plugin: 'kotlin-kapt'
 android {
 
     compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId "com.cuihai.app"
+        applicationId "com.training.app"
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
         versionCode rootProject.ext.android.versionCode
@@ -58,7 +57,7 @@ dependencies {
     implementation project(':base')
     implementation project(':home')
     implementation project(':mine')
-    implementation project(':jni')
+//    implementation project(':jni')
     if (isNeedLoginModule.toBoolean()) {
         implementation project(':login')
     }

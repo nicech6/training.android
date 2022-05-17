@@ -65,4 +65,5 @@ dependencies {
     api rootProject.ext.dependencies.smartrefresh
     api rootProject.ext.dependencies["magic-tablayout"]
     api rootProject.ext.dependencies["flyco-tablayout"]
+    implementation "com.google.code.gson:gson:2.7"
 }

@@ -65,7 +65,7 @@ android {
 }
 
 dependencies {
-    api project(':base')
+    implementation project(':base')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     kapt rootProject.ext.dependencies["arouter-compiler"]
     annotationProcessor rootProject.ext.dependencies.arouter

@@ -2,24 +2,24 @@ package com.cuh.inject
 
 import com.android.build.api.transform.*
 import com.android.build.gradle.internal.pipeline.TransformManager
-import kotlin.Unit
+import com.cuh.inject.cv.InjectClassClassVisitor
+import com.cuh.inject.md5.MD5
 import kotlin.io.ByteStreamsKt
 import kotlin.io.CloseableKt
+import kotlin.io.FilesKt
 import kotlin.jvm.internal.Intrinsics
-import kotlin.text.StringsKt
 import org.gradle.api.Project
 import org.objectweb.asm.ClassReader
-import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.Opcodes
 
-import java.util.jar.JarFile
-import java.util.logging.FileHandler
+import java.util.concurrent.LinkedBlockingQueue
+import java.util.concurrent.ThreadPoolExecutor
+import java.util.concurrent.TimeUnit
 import java.util.zip.CRC32
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 import java.util.zip.ZipOutputStream
-
 
 class InjectTransform extends Transform {
 
@@ -30,36 +30,256 @@ class InjectTransform extends Transform {
     }
 
     @Override
-    void transform(Context context, Collection<TransformInput> inputs, Collection<TransformInput> referencedInputs, TransformOutputProvider outputProvider, boolean isIncremental) throws IOException, TransformException, InterruptedException {
-        super.transform(context, inputs, referencedInputs, outputProvider, isIncremental)
-        print("--------------start transform" + "------isIncremental" + isIncremental + "\n")
-        if (true) {
+    void transform(TransformInvocation transformInvocation) throws TransformException, InterruptedException, IOException {
+        super.transform(transformInvocation)
+
+        def outputProvider = transformInvocation.outputProvider
+        def inputs = transformInvocation.inputs
+        def outDir = transformInvocation.outputProvider.getContentLocation("inject", outputTypes, scopes, Format.DIRECTORY)
+        def isIncremental = transformInvocation.incremental
+        def executor = new ThreadPoolExecutor(8, 10, 1, TimeUnit.MINUTES, new LinkedBlockingQueue<Runnable>())
+
+        if (isIncremental) {
+            println("Inject doing incremental build ...")
             inputs.each { transformInput ->
                 transformInput.jarInputs.each { jarInput ->
                     def jarFile = jarInput.file
                     def status = jarInput.status
-                    if (status == Status.REMOVED) {
+                    if (status == Status.NOTCHANGED) {
                         return
                     }
                     def uniqueName = jarFile.name + "_" + MD5.md5String(jarFile.absolutePath)
-                    def jarOutDir = outputProvider.getContentLocation(uniqueName, outputTypes, jarInput.scopes, Format.JAR)
-//                    println("--------------Status of jar " + jarFile + " is " + status + "jarOutDir " + jarOutDir)
-                    processJarFile(jarFile, jarOutDir)
-//                    scanJar(jarFile, outputProvider)
-//                    print("------" + "jarFile--" + jarFile + "\n" + "------" + "jarOutD" + jarOutDir + "\n")
+                    def jarOutFile = outputProvider.getContentLocation(uniqueName, outputTypes, jarInput.scopes, Format.JAR)
+                    if (status == Status.REMOVED) {
+                        jarOutFile.delete()
+                        return
+                    }
+//                    println("Inject jarInputs" + jarFile + "\n")
+                    executor.execute(new Runnable() {
+                        @Override
+                        void run() {
+                            newProcessJarFile(jarFile, jarOutFile)
+                        }
+                    })
                 }
-//                transformInput.directoryInputs.each { directoryInput ->
-//                    def pathBitLen = directoryInput.file.toString().length() + 1
-//                    directoryInput.changedFiles.each {
-//                        def classPath = it.toString().substring(pathBitLen)
-//                        if (status == Status.NOTCHANGED) {
-//                            return
-//                        }
-//                        println("--------------Status of file" + classPath + "\n")
-//                    }
-//                }
+                transformInput.directoryInputs.each { directoryInput ->
+                    def pathBitLen = directoryInput.file.toString().length() + 1
+                    for (Map.Entry<File, Status> entry : directoryInput.changedFiles.entrySet()) {
+                        def file = entry.getKey()
+                        def status = entry.value
+                        def classPath = file.toString().substring(pathBitLen)
+                        if (status == Status.NOTCHANGED) {
+                            return
+                        }
+                        println("Inject directoryInputs" + classPath + "\n")
+                        def outputFile = new File(outDir, classPath)
+                        if (status == Status.REMOVED) {
+                            outputFile.delete()
+                            return
+                        }
+                        executor.execute(new Runnable() {
+                            @Override
+                            void run() {
+                                processClassFile(classPath, file, outputFile)
+                            }
+                        })
+                    }
+                }
+            }
+        } else {
+            println("Inject doing non-incremental build ...")
+            outputProvider.deleteAll()
+            outDir.mkdirs()
+            inputs.each { transformInput ->
+                transformInput.jarInputs.each { jarInput ->
+                    def jarFile = jarInput.file
+                    def uniqueName = jarFile.name + "_" + MD5.md5String(jarFile.absolutePath)
+                    def jarOutDir = outputProvider.getContentLocation(uniqueName, outputTypes, jarInput.scopes, Format.JAR)
+//                    println("Inject jarInputs" + jarFile + "\n" + "jarOutDir" + jarOutDir)
+                    executor.execute(new Runnable() {
+                        @Override
+                        void run() {
+                            processClassFileV2(jarFile, jarOutDir)
+                        }
+                    })
+                }
+                transformInput.directoryInputs.each { directoryInput ->
+                    def pathBitLen = directoryInput.file.toString().length() + 1
+                    def file = directoryInput.getFile()
+                    def list = allFiles(file)
+                    list.each {
+                        if (!it.isDirectory()) {
+                            def classPath = it.toString().substring(pathBitLen)
+                            def outputFile = new File(outDir, classPath)
+//                            print("classPath-" + classPath + "\n" + "outputFile-" + outputFile)
+                            executor.execute(new Runnable() {
+                                @Override
+                                void run() {
+                                    try {
+                                        print("executor")
+                                        processClassFileV2(classPath, it, outputFile)
+                                    } catch (Throwable e) {
+                                        def wrapped = new RuntimeException("Error occurred when processing $f", e)
+                                        exceptionSet.add(wrapped)
+                                        print("e" + e.toString())
+                                    }
+                                }
+                            })
+                        }
+                    }
+                }
             }
         }
+        executor.shutdown()
+        executor.awaitTermination(Integer.MAX_VALUE.toLong(), TimeUnit.SECONDS)
+    }
+
+    private byte[] toReadBytes(InputStream is) {
+        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+        int nRead;
+        byte[] data = new byte[16384];
+        while ((nRead = is.read(data, 0, data.length)) != -1) {
+            buffer.write(data, 0, nRead);
+        }
+        return buffer.toByteArray()
+    }
+
+    void processJarV2(File file, File outFile) {
+        CRC32 crc32 = new CRC32();
+        outFile.delete();
+        outFile.getParentFile().mkdirs();
+        FileOutputStream fos = null;
+
+        try {
+            fos = new FileOutputStream(outFile);
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            ZipFile zipFile = null;
+            try {
+                zipFile = new ZipFile(file);
+                ArrayList<? extends ZipEntry> list = Collections.list(zipFile.entries());
+                Iterable<? extends ZipEntry> forEachIv = list;
+                Iterator iterator = forEachIv.iterator();
+                while (iterator.hasNext()) {
+                    ZipEntry it = (ZipEntry) iterator.next();
+//            print("ZipEntry-"+it)
+                    String name = it.getName();
+                    InputStream inputStream;
+                    try {
+                        inputStream = zipFile.getInputStream(it);
+                        byte[] bytes = toReadBytes(inputStream)
+
+                        if (name.endsWith(".class")) {
+                            bytes = doTransferV2(name, bytes);
+                        }
+                        crc32.reset();
+                        crc32.update(bytes);
+                        ZipEntry zipEntry = new ZipEntry(name)
+                        zipEntry.setMethod(ZipEntry.STORED)
+                        zipEntry.setSize(bytes.length)
+                        zipEntry.setCompressedSize(bytes.length)
+                        zipEntry.setCrc(crc32.getValue())
+                        zos.putNextEntry(zipEntry)
+                        zos.write(bytes)
+                        zos.closeEntry()
+                    } catch (Exception e1) {
+
+                    } finally {
+                        inputStream.close()
+                    }
+                }
+            } catch (Exception var51) {
+
+            } finally {
+                zipFile.close();
+            }
+
+        } catch (Exception var51) {
+
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    private void aa(File file, File outFile) {
+        def crc32 = new CRC32()
+        outFile.delete()
+        outFile.parentFile.mkdirs()
+        def fos = new FileOutputStream(outFile)
+        def zos = new ZipOutputStream(fos)
+        def zipFile = new ZipFile(file)
+        def list = Collections.list(zipFile.entries())
+        def iterator = list.iterator()
+        while (iterator.hasNext()) {
+            ZipEntry it = (ZipEntry) iterator.next()
+//            print("ZipEntry-"+it)
+            def name = it.name
+            def z = zipFile.getInputStream(it)
+            def bytes = toReadBytes(z)
+
+            if (name.endsWith(".class")) {
+                bytes = doTransferV2(name, bytes)
+            }
+            crc32.reset()
+            crc32.update(bytes)
+            def zipEntry = new ZipEntry(name)
+            zipEntry.method = ZipEntry.STORED
+            zipEntry.size = bytes.size().toLong()
+            zipEntry.compressedSize = bytes.size().toLong()
+            zipEntry.crc = crc32.value
+            zos.putNextEntry(zipEntry)
+            zos.write(bytes)
+            zos.closeEntry()
+        }
+        zos.flush()
+    }
+
+    private void processClassFileV2(String classPath, File file, File outputFile) {
+//        print("classPath" + classPath)
+
+        if (file.isDirectory()) {
+            return
+        }
+        outputFile.getParentFile().mkdir()
+        def classFileBuffer = FilesKt.readBytes(file)
+//        print("classPath" + classPath)
+
+        if (classPath.endsWith(".class")) {
+            def fos = new FileOutputStream(file)
+//            print("classPath---" + classPath + "---" + "length-" + classFileBuffer.length + "\n")
+            fos.write(doTransferV2(classPath, classFileBuffer))
+            fos.close()
+        }
+    }
+
+    private byte[] doTransferV2(String classPath, byte[] input) {
+        def className = classPath.substring(0, classPath.lastIndexOf('.')).replace(File.separator, '/')
+        def reader = new ClassReader(input)
+        def writer = new ClassWriter(reader, ClassWriter.COMPUTE_MAXS)
+        def cv = new InjectClassClassVisitor(Opcodes.ASM7, writer)
+        reader.accept(cv, ClassReader.EXPAND_FRAMES)
+        return writer.toByteArray()
+    }
+
+    private static List<File> allFiles(File dir) {
+        if (dir == null || !dir.exists() || !dir.isDirectory())
+            return null
+        ArrayList<File> fileArrayList = new ArrayList<>();
+        for (File f : dir.listFiles()) {
+            if (f.isFile()) {
+                fileArrayList.add(f)
+            } else if (f.isDirectory()) {
+                List<File> subFiles = allFiles(f)
+                if (subFiles != null) {
+                    fileArrayList.addAll(subFiles)
+                }
+            }
+        }
+        return fileArrayList
     }
 
     private void processJarFile(File file, File outFile) {
@@ -139,7 +359,7 @@ class InjectTransform extends Transform {
                     zos.closeEntry();
                 }
                 zos.flush();
-                Unit var54 = Unit.INSTANCE;
+                def var54 = Unit.INSTANCE;
             } catch (Throwable var49) {
                 var11 = var49;
                 print("------var49-----" + var49)
@@ -163,54 +383,23 @@ class InjectTransform extends Transform {
         reader.accept(cv, ClassReader.EXPAND_FRAMES)
         return writer.toByteArray()
     }
-
-    private void scanJar(File file, TransformOutputProvider outputProvider) {
-        def jarFile = new JarFile(file)
-        def jarEntries = jarFile.entries()
-        def classReader = new ClassReader(file.bytes)
-        print("---" + file.bytes)
-        def classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
-        def classVisitor = new InjectClassClassVisitor(Opcodes.ASM7, classWriter)
-        classReader.accept(classVisitor, ClassReader.EXPAND_FRAMES)
-        def bytes = classWriter.toByteArray()
-        def fos = new FileOutputStream(file.parentFile.absolutePath + File.separator + name)
-        fos.write(bytes)
-        fos.close()
-
-        def dest = outputProvider.getContentLocation(
-                file.name,
-                file.contentTypes,
-                file.scopes,
-                Format.JAR)
-        //这里执行字节码的注入，不操作字节码的话也要将输入路径拷贝到输出路径
-//        copyFile(file.file, dest)
-//        while (jarEntries.hasMoreElements()) {
-//            def jarNext = jarEntries.nextElement()
-//            def entryName = jarNext.name
-//            print("------entryName-----" + entryName + "\n" + "file---" + file + "\n")
+//
+//    private static boolean copyFile(File srcFile, File destFile) {
+//        try {
+//            InputStream streamFrom = new FileInputStream(srcFile);
+//            OutputStream streamTo = new FileOutputStream(destFile);
+//            def buffer = new byte[1024];
+//            int len;
+//            while ((len = streamFrom.read(buffer)) > 0) {
+//                streamTo.write(buffer, 0, len);
+//            }
+//            streamFrom.close();
+//            streamTo.close();
+//            return true;
+//        } catch (Exception ex) {
+//            return false;
 //        }
-//        if (jarFile != null) {
-//            print("----" + "jarFile-close" + "\n")
-//            jarFile.close()
-//        }
-    }
-
-    private static boolean copyFile(File srcFile, File destFile) {
-        try {
-            InputStream streamFrom = new FileInputStream(srcFile);
-            OutputStream streamTo = new FileOutputStream(destFile);
-            def buffer = new byte[1024];
-            int len;
-            while ((len = streamFrom.read(buffer)) > 0) {
-                streamTo.write(buffer, 0, len);
-            }
-            streamFrom.close();
-            streamTo.close();
-            return true;
-        } catch (Exception ex) {
-            return false;
-        }
-    }
+//    }
 //    private void processJarFile(File file, File outFile) {
 //        def crc32 = new CRC32()
 //        outFile.delete()
@@ -273,22 +462,22 @@ class InjectTransform extends Transform {
 
     @Override
     String getName() {
-        return "aaa-transform"
+        return "cuihai-transform"
     }
 
     @Override
     Set<QualifiedContent.ContentType> getInputTypes() {
-        return TransformManager.CONTENT_CLASS;
+        return TransformManager.CONTENT_CLASS
     }
 
     @Override
     Set<? super QualifiedContent.Scope> getScopes() {
-        return TransformManager.SCOPE_FULL_PROJECT;
+        return TransformManager.SCOPE_FULL_PROJECT
     }
 
     @Override
     boolean isIncremental() {
-        return true
+        return false
     }
 
 }
