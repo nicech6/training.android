@@ -1,9 +1,9 @@
 ext {
     android = [
-            compileSdkVersion: 28,
-            buildToolsVersion: "32.0.0",
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.0",
             minSdkVersion    : 21,
-            targetSdkVersion : 28,
+            targetSdkVersion : 29,
             versionCode      : 1,
             versionName      : "1.0",
     ]
@@ -11,8 +11,13 @@ ext {
             "constraintlayout": "androidx.constraintlayout:constraintlayout:1.1.3",
             "junit"           : "androidx.test.ext:junit:1.1.0",
             "espresso-core"   : "androidx.test.espresso:espresso-core:3.1.1",
+            "test"            : "junit:junit:4.12",
             "appcompat"       : "androidx.appcompat:appcompat:1.0.2",
             "life-extensions" : "android.arch.lifecycle:extensions:1.1.1"
+    ]
+
+    tetst = [
+
     ]
 
     dependencies = [
@@ -23,8 +28,8 @@ ext {
             "adapter-rxjava"             : "com.squareup.retrofit2:adapter-rxjava:2.1.0",
             "converter-gson"             : "com.squareup.retrofit2:converter-gson:2.1.0",
             "logging-interceptor"        : "com.squareup.okhttp3:logging-interceptor:3.4.1",
-            "rxjava"                     : "io.reactivex:rxjava:1.1.6",
-            "rxandroid"                  : "io.reactivex:rxandroid:1.2.1",
+            "rxjava"                     : "io.reactivex:rxjava:2.1.1",
+            "rxandroid"                  : "io.reactivex:rxandroid:2.1.1",
             "gson"                       : "com.google.code.gson:gson:2.8.5",
             "material"                   : "com.google.android.material:material:1.0.0",
             "BasePopup"                  : "com.github.razerdp:BasePopup:2.2.0",
@@ -32,7 +37,7 @@ ext {
             "leakcanary-android"         : "com.squareup.leakcanary:leakcanary-android:1.6.2",
             "leakcanary-support-fragment": "com.squareup.leakcanary:leakcanary-support-fragment:1.6.2",
             "ktx"                        : "androidx.core:core-ktx:1.6.0",
-            "ktx-jdk"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            "ktx-jdk"                    : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
             "flyco-tablayout"            : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
             "magic-tablayout"            : "com.github.hackware1993:MagicIndicator:1.5.0",
             "glide"                      : "com.github.bumptech.glide:glide:4.9.0",

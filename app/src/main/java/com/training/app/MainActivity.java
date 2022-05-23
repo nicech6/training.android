@@ -1,8 +1,5 @@
 package com.training.app;
 
-import android.view.View;
-import android.view.WindowInsets;
-
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -42,17 +39,6 @@ public class MainActivity extends BaseMvpActivity {
     protected void initView() {
         mTabLayout = findViewById(R.id.tab);
         mViewPager = findViewById(R.id.viewpager);
-
-        View root = findViewById(R.id.root);
-        root.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-        root.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
-            @Override
-            public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
-                root.setPadding(insets.getSystemWindowInsetLeft(), insets.getSystemWindowInsetTop(), insets.getSystemWindowInsetRight(), 0);
-
-                return insets.consumeSystemWindowInsets();
-            }
-        });
     }
 
     @Override
