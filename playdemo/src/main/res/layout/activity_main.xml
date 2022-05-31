@@ -84,6 +84,20 @@
     <TextView
         android:id="@+id/debug_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/control_container" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <com.google.android.exoplayer2.ui.DefaultTimeBar
+        android:id="@+id/timeBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/debug_view"
+        app:buffered_color="@android:color/darker_gray"
+        app:played_color="#FFDE81"
+        app:unplayed_color="@android:color/black" />
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/exo_play"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 </RelativeLayout>
