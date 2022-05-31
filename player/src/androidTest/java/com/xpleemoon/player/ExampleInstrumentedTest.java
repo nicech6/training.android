@@ -1,4 +1,4 @@
-package com.xpleemoon.player;
+package com.training.player;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

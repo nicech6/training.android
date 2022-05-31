@@ -1,4 +1,4 @@
-package com.xpleemoon.player;
+package com.training.player;
 
 import org.junit.Test;
 
